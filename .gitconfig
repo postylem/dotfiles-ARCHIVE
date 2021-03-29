@@ -1,0 +1,29 @@
+[user]
+	name = Jacob Louis Hoover
+	email = postylem@gmail.com
+[core]
+	excludesfile = /Users/j/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[color]
+	ui = auto
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	st = status
+	psuh = push
+[pull]
+	ff = only
+[fetch]
+	prune = true
+[diff]
+	colorMoved = zebra
+[init]
+	defaultBranch = main
