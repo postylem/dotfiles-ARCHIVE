@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/j/.emacs.d'
+let g:netrw_dirhist_9='/Users'
+let g:netrw_dirhist_8='/Users/j/.config'
+let g:netrw_dirhist_7='/Users'
+let g:netrw_dirhist_6='/Users/j'
+let g:netrw_dirhist_5='/Users/j/.rstudio-desktop'
+let g:netrw_dirhist_4='/Users/j'
+let g:netrw_dirhist_3='/Users/j/.dotfiles/nvim'
+let g:netrw_dirhist_2='/Users/j'
+let g:netrw_dirhist_1='/Users/j/.gnome2'

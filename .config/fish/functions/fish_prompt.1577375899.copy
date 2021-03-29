@@ -1,0 +1,165 @@
+# fish_prompt example copied from:
+# https://transitory.technology/fish-shell/
+# ---
+
+# lifted cool stuff from:
+# https://github.com/fish-shell/fish-shell/blob/master/share/functions/fish_prompt.fish
+# https://github.com/fish-shell/fish-shell/blob/master/share/tools/web_config/sample_prompts/robbyrussell.fish
+
+function fish_prompt_EXAMPLE
+
+    # define git functions if not already defined
+    if not set -q -g __fish_git_functions_defined
+        set -g __fish_git_functions_defined
+        function _git_branch_name
+            echo (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+        end
+        function _is_git_dirty
+            echo (git status -s --ignore-submodules=dirty ^/dev/null)
+        end
+    end
+
+    # define hostname if not already defined
+    if not set -q __fish_prompt_hostname
+        set -g __fish_prompt_hostname (hostname|cut -d . -f 1)
+    end
+
+    # shortcuts for colors
+    set -l cyan (set_color -o cyan)
+    set -l yellow (set_color -o yellow)
+    set -l magenta (set_color -o magenta)
+    set -l red (set_color -o red)
+    set -l blue (set_color -o blue)
+    set -l normal (set_color normal)
+
+    # cool emoji skull
+    set -l skull $normal"💀 "
+
+    # user at host
+    set -l user_host $cyan"$USER@$__fish_prompt_hostname"
+
+    # set path
+    set -l cwd $magenta(prompt_pwd)
+
+    # if git branch
+    if [ (_git_branch_name) ]
+        set git_info $blue"("(_git_branch_name)")"
+
+        # if dirty
+        if [ (_is_git_dirty) ]
+            set -l dirty "$red ✗"
+            set git_info "$git_info$dirty "
+        else
+            set git_info "$git_info "
+        end
+    end
+
+    echo -n -s "$skull $user_host $cwd $git_info$skull"
+    echo -e '\n'
+end
+
+
+function fish_prompt
+	
+    # - green lines if the last return command is OK, red otherwise
+    # - your user name, in red if root or yellow otherwise
+    # - your hostname, in cyan if ssh or blue otherwise
+    # - the current path (with prompt_pwd)
+    # - date +%X
+    # - the current virtual environment, if any
+    # - the current git status, if any, with __fish_git_prompt
+    # - the current battery state, if any, and if your power cable is unplugged, and if you have "acpi"
+    # - current background jobs, if any
+
+    # It goes from:
+    # ┬─[nim@Hattori:~]─[11:39:00]
+    # ╰─>$ echo here
+
+    # To:
+    # ┬─[nim@Hattori:~/w/dashboard]─[11:37:14]─[V:django20]─[G:master↑1|●1✚1…1]─[B:85%, 05:41:42 remaining]
+    # │ 2	15054	0%	arrêtée	sleep 100000
+    # │ 1	15048	0%	arrêtée	sleep 100000
+    # ╰─>$ echo there
+
+    set -q __fish_git_prompt_showupstream
+    or set -g __fish_git_prompt_showupstream auto
+
+    function _nim_prompt_wrapper
+        set retc $argv[1]
+        set field_name $argv[2]
+        set field_value $argv[3]
+
+        set_color normal
+        set_color $retc
+        echo -n '─'
+        set_color -o green
+        echo -n '['
+        set_color normal
+        test -n $field_name
+        and echo -n $field_name:
+        set_color $retc
+        echo -n $field_value
+        set_color -o green
+        echo -n ']'
+    end
+    and set retc green
+    or set retc red
+
+    #set_color $retc
+    #echo -n '┬─'
+    set_color -o green
+    echo -n [
+    if test "$USER" = root -o "$USER" = toor
+        set_color -o red
+    else
+        set_color -o yellow
+    end
+    echo -n $USER
+    set_color -o white
+    #echo -n @
+    #if [ -z "$SSH_CLIENT" ]
+    #    set_color -o blue
+    #else
+    #    set_color -o cyan
+    #end
+    # echo -n (prompt_hostname)
+    set_color -o cyan
+    echo -n ' '(prompt_pwd)
+    set_color -o green
+    echo -n ']'
+
+    # Date
+    _nim_prompt_wrapper $retc '' (date +%X)
+
+    # Virtual Environment
+    set -q VIRTUAL_ENV
+    and _nim_prompt_wrapper $retc V (basename "$VIRTUAL_ENV")
+
+    # git
+    set prompt_git (__fish_git_prompt | string trim -c ' ()')
+    test -n "$prompt_git"
+    and _nim_prompt_wrapper $retc G $prompt_git
+
+    # Battery status
+    type -q acpi
+    and test (acpi -a 2> /dev/null | string match -r off)
+    and _nim_prompt_wrapper $retc B (acpi -b | cut -d' ' -f 4-)
+
+    # New line
+    echo
+
+    # Background jobs
+    set_color normal
+    for job in (jobs)
+        #set_color $retc
+        #echo -n '│ '
+        set_color brown
+        echo $job
+    end
+    set_color normal
+    #set_color $retc
+    #echo -n '╰─>'
+    set_color -o red
+    echo -n '$ '
+    set_color normal
+end
