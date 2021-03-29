@@ -1,0 +1,46 @@
+# Using a (bare) git repo for dotfiles
+
+This is mostly following [Greg Owen's nice article](https://stegosaurusdormant.com/bare-git-repo/). See more detailed info there.
+
+## 1. Setting up the bare git repo the first time
+
+1. Create a new bare git repo in the home directory on the local machine where there are dotfiles to keep track of (using a .git suffix for a bare git repo is convention to follow):
+```bash
+git init --bare $HOME/dotfiles.git
+```
+
+2. Add the following alias to your .bashrc or .zshrc, so you don't have to type it every time you want to add a file to the `dofiles` repo
+```bash
+alias dotgit='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+```
+
+3. Make Git not show all the untracked files in the home dir, then add the remote (make the new repo on github first)
+```bash
+dotgit config status.showUntrackedFiles no
+dotgit remote add origin https://github.com/postylem/dotfiles.git
+```
+
+4. Add a new file to track (e.g. `.gitconfig`), and push while setting the remote branch at the same time (so in the future you just need to use `git push`:
+```bash
+dotgit add ~/.gitcnfig
+dotgit commit -m "track gitconfig"
+dotgit push --set-upstream origin main
+```
+
+## 2. Cloning and using dotfiles on a new machine
+
+1. Clone the repo to a temporary location on the new machine
+```bash
+git clone \
+  --separate-git-dir=$HOME/dotfiles.git \
+  https://github.com/postylem/dotfiles.git \
+  dotfiles-tmp
+```
+
+2. Copy the working tree snapshot from the temporary location to the home directory, and delete the temp directory.
+```bash
+rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
+rm -rf dotfiles-tmp
+```
+
+3. Do steps 2--4 from above to set up a git bare repo on this new machine.
