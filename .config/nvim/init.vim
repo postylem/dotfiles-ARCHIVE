@@ -27,7 +27,7 @@ call plug#end()
 """"" EDITOR SETTINGS and `let`s
 set termguicolors " to get 256 colors in terminal
 colorscheme gruvbox
-let g:netrw_liststyle = 3 " to get default hierarchical netrw view
+let g:netrw_liststyle=3 " to get default hierarchical netrw view
 
 " dealing with mispelllings
 setlocal spell spelllang=en_ca,en_us
@@ -61,6 +61,11 @@ else
 endif
 
 """"" AUTOCOMMANDS
+
+augroup MyVimtex
+  autocmd!
+  autocmd User VimtexEventQuit VimtexClean
+augroup END
 
 " Automatically change to absolute numbering in insert mode
 " augroup numbertoggle

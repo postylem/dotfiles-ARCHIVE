@@ -144,6 +144,12 @@ let g:vimtex_syntax_conceal_cites = {
       \ 'type': 'icon',
       \ 'icon': '📖',
       \}
+" Clean up on exit
+augroup MyVimtex
+  au!
+  au User VimtexEventQuit VimtexClean
+augroup END
+
 
 " Ultisnips settings
 let g:UltiSnipsEditSplit="vertical"
