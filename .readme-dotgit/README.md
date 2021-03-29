@@ -1,6 +1,6 @@
 # Using a (bare) git repo for dotfiles
 
-This is mostly following [Greg Owen's nice article](https://stegosaurusdormant.com/bare-git-repo/). See more detailed info there.
+This is mostly following [Greg Owen's nice post](https://stegosaurusdormant.com/bare-git-repo/) explaining why and how to set up a bare git repo for dotfiles. See more detailed info there.
 
 ## 1. Setting up the bare git repo the first time
 
@@ -22,7 +22,7 @@ dotgit remote add origin https://github.com/postylem/dotfiles.git
 
 4. Add a new file to track (e.g. `.gitconfig`), and push while setting the remote branch at the same time (so in the future you just need to use `git push`:
 ```bash
-dotgit add ~/.gitcnfig
+dotgit add ~/.gitconfig
 dotgit commit -m "track gitconfig"
 dotgit push --set-upstream origin main
 ```
