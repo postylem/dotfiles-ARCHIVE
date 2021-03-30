@@ -46,8 +46,8 @@ nnoremap <leader>k :wincmd k<cr>
 nnoremap <leader>l :wincmd l<cr>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
 
-nnoremap <silent> <leader>- :resize -1<cr> 
-nnoremap <leader>= :resize +1<cr> 
+nnoremap <silent> <leader>- :resize -1<cr>
+nnoremap <leader>= :resize +1<cr>
 
 " Terminal mappings
 tnoremap <esc> <c-\><c-n>
