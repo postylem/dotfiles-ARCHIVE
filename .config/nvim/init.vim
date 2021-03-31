@@ -18,11 +18,16 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
 
 Plug 'nvim-telescope/telescope.nvim' |
       \ Plug 'nvim-lua/popup.nvim' |
       \ Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 call plug#end()
+
+" I'll put any lua things in ./lua/j/*.lua
+lua require('j')
 
 """"" EDITOR SETTINGS and `let`s
 set termguicolors " to get 256 colors in terminal

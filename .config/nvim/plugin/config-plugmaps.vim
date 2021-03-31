@@ -1,9 +1,10 @@
 " REMAPS
-
+require('j')
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>vrc :lua require('j.telescope').search_dotfiles()<CR>
 
 nnoremap <leader>u :UndotreeShow<cr>
 
@@ -17,4 +18,6 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-nnoremap <leader>g :G<cr>
+nnoremap <leader>gg :G<cr>
+nnoremap <leader>gj :diffget //3<cr>
+nnoremap <leader>gf :diffget //2<cr>

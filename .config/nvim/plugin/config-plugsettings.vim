@@ -2,10 +2,10 @@
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | 
-    \ execute 'cd '.argv()[0] | endif
+      \ execute 'NERDTree' argv()[0] |
+      \ execute 'cd '.argv()[0] | endif
 
-" Syntastic settings 
+" Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -20,7 +20,7 @@ let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_tex_checkers = ['chktex']
 
-" ignore overeager chktex warnings by just regexing them 
+" ignore overeager chktex warnings by just regexing them
 " TODO: put this in the .chktexrc file somehow
 let g:syntastic_tex_chktex_quiet_messages = {
       \ 'regex': [
@@ -56,3 +56,5 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:snips_author="jacob"
 let g:snips_email="postylem@gmail.com"
 let g:snips_github="https://github.com/postylem"
+
+" telescope.nvim setup is in lua/j/telescope.lua
