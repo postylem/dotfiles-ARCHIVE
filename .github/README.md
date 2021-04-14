@@ -1,8 +1,10 @@
-This file lives in `.github/README.md` so it will be displayed when viewing the repo on GitHub.
+_This readme file is at `.github/README.md`, so it will be displayed when viewing the repo on GitHub._
 
 # Using a (bare) git repo for dotfiles
 
 This is mostly following [Greg Owen's nice post](https://stegosaurusdormant.com/bare-git-repo/) explaining why and how to set up a bare git repo for dotfiles. See more detailed info there.
+
+Here's how I set this up:
 
 ## 1. Setting up the bare git repo the first time
 
