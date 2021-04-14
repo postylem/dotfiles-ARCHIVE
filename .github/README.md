@@ -1,3 +1,5 @@
+This file lives in `.github/README.md` so it will be displayed when viewing the repo on GitHub.
+
 # Using a (bare) git repo for dotfiles
 
 This is mostly following [Greg Owen's nice post](https://stegosaurusdormant.com/bare-git-repo/) explaining why and how to set up a bare git repo for dotfiles. See more detailed info there.
