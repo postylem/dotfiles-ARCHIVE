@@ -86,23 +86,20 @@ endsnippet
 snippet template "basic (xe)latex template"
 %!TEX program = xelatex
 \documentclass[11pt]{article}
-
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
 \usepackage{enumitem,booktabs} 
 \usepackage[margin=1in]{geometry}
-
 \usepackage{fontspec}
 \setmainfont{Linux Libertine}
-
 \usepackage[%
   natbib=true,backend=biber,sorting=nymdt,%
   citestyle=authoryear,bibstyle=authoryear,%
   url=false,doi=false,isbn=false%
   ]{biblatex}
 \addbibresource{/Users/j/Library/texmf/bibtex/bib/all.bib} 
-\input{/Users/j/Library/texmf/custom/jbib_links.tex} % note: imports xcolor, imports and configs hyperref, defines nymdt sorting
+% imports xcolor, imports and configs hyperref, defines nymdt sorting:
+\input{/Users/j/Library/texmf/custom/jbib_links.tex}
 \usepackage{cleveref} % must come after importing hyperref
-
 \input{/Users/j/Library/texmf/custom/jformat.tex} % general formatting things
 
 \newtheorem*{theorem}{Theorem}
@@ -114,9 +111,9 @@ snippet template "basic (xe)latex template"
 
 \title{$1}
 %\author{Jacob Louis Hoover}
-\date{\today}
+%\date{}
 
-\maketitle
+%\maketitle
 
 $0
 

@@ -19,6 +19,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'JuliaEditorSupport/julia-vim'
 
 Plug 'nvim-telescope/telescope.nvim' |
       \ Plug 'nvim-lua/popup.nvim' |
