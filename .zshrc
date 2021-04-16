@@ -122,7 +122,10 @@ prompt pure
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# This may need to be uncommented if you have the issue of 
+# Zsh repeats command in output mentioned here 
+# https://stackoverflow.com/questions/30940299/zsh-repeats-command-in-output
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -158,7 +161,6 @@ plugins=(
   common-aliases
   node
   npm
-  rand-quote
   sudo
   yarn
   z
@@ -198,6 +200,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/Users/j/.gem/ruby/2.6.0/bin:$PATH"
+source ~/.rvm/scripts/rvm
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -216,8 +219,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 #}
 export PATH="/usr/local/sbin:$PATH"
 
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # Note this must be last thing in the zshrc
-source /Users/j/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /Users/j/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

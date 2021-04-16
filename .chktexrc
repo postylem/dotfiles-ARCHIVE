@@ -388,8 +388,14 @@ Silent
 
     \langle \rangle
     \llbracket \rrbracket
+    \lbrace \rbrace
 
     \lambda
+
+    \implies
+    \cup \cap \varnothing
+
+    \pause
 
 }[
 # Here you can put regular expressions to match Silent macros.  It was
