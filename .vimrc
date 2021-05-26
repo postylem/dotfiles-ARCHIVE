@@ -60,9 +60,10 @@ Plug 'ervandew/supertab'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
-colorscheme gruvbox 
+colorscheme gruvbox
 set background=dark
 
 " for ctrlp, set working dir, and exclude .gitignore patterns
@@ -79,8 +80,8 @@ nnoremap <leader>h :wincmd h<cr>
 nnoremap <leader>j :wincmd j<cr>
 nnoremap <leader>k :wincmd k<cr>
 nnoremap <leader>l :wincmd l<cr>
-nnoremap <silent> <leader>- :resize -1<cr> 
-nnoremap <leader>= :resize +1<cr> 
+nnoremap <silent> <leader>- :resize -1<cr>
+nnoremap <leader>= :resize +1<cr>
 nnoremap <leader>u :UndotreeShow<cr>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
 noremap <leader>C :Commentary<cr>
@@ -98,13 +99,13 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'cd '.argv()[0] | execute 'NERDTree' argv()[0] | endif
+      \ execute 'cd '.argv()[0] | execute 'NERDTree' argv()[0] | endif
 
 " dealing with mispelllings
 setlocal spell spelllang=en_ca,en_us
 inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
-" Syntastic settings 
+" Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -119,11 +120,11 @@ let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_tex_checkers = ['chktex']
 
-" ignore overeager chktex warnings by just regexing them 
+" ignore overeager chktex warnings by just regexing them
 " TODO: put this in the .chktexrc file somehow
 let g:syntastic_tex_chktex_quiet_messages = {
       \ 'regex': [
-      \ 	'You should enclose the previous parenthesis with',
+      \   'You should enclose the previous parenthesis with',
       \   'is normally not followed by'
       \ ],
       \}
@@ -141,7 +142,7 @@ let g:vimtex_view_method='skim'
 "       \'cites': 0,
 "       \}
 let g:vimtex_syntax_conceal_cites = {
-      \ 'type': 'icon',
+      \ 'type': 'brackets',
       \ 'icon': '📖',
       \}
 " Clean up on exit

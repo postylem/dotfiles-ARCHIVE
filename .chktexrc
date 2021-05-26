@@ -390,6 +390,8 @@ Silent
     \llbracket \rrbracket
     \lbrace \rbrace
 
+    \ex
+
     \lambda
 
     \implies
@@ -485,6 +487,8 @@ WipeArg
     \Citet:*[][]{} \Citep:*[][]{} \Citealt:*{} \Citealp:*[]{} \Citeauthor:{}
     \citetext:{} \citeyear:*{} \citeyearpar:{}
     \tikzset:{}
+    \DeclarePairedDelimiterX:{}[]{}{}{}
+    \DeclareMathSymbol:{}{}{}{}
 }
 
 #####################################################################
