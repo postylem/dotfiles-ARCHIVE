@@ -40,7 +40,6 @@ set incsearch
 set hlsearch
 set colorcolumn=80
 set wildmenu
-set foldcolumn=auto:9 " display up to 9 columns of folds
 
 let mapleader=" "
 
