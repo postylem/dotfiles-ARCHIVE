@@ -25,5 +25,6 @@ set textwidth=80                    " max width of text being inserted
 set colorcolumn=+0                  " color at n columns past 'textwidth'
 set clipboard=unnamedplus           " copy/paste between vim and system
 set wildmenu
+set foldcolumn=auto:9               " display up to 9 columns of folds
 set list                            " see some unruly whitespace chars
 set listchars=tab:>-,trail:@,extends:>,precedes:<,nbsp:~

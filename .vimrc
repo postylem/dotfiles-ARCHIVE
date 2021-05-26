@@ -16,7 +16,8 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-" General settings
+
+" General set-tings
 set mouse=a
 set noerrorbells
 set tabstop=2 softtabstop=2
@@ -39,6 +40,7 @@ set incsearch
 set hlsearch
 set colorcolumn=80
 set wildmenu
+set foldcolumn=auto:9 " display up to 9 columns of folds
 
 let mapleader=" "
 
@@ -120,6 +122,7 @@ let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_tex_checkers = ['chktex']
 
+" " latex things
 " ignore overeager chktex warnings by just regexing them
 " TODO: put this in the .chktexrc file somehow
 let g:syntastic_tex_chktex_quiet_messages = {
@@ -150,7 +153,6 @@ augroup MyVimtex
   au!
   au User VimtexEventQuit VimtexClean
 augroup END
-
 
 " Ultisnips settings
 let g:UltiSnipsEditSplit="vertical"
