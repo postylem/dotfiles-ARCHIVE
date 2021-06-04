@@ -9,7 +9,7 @@
  '(ispell-highlight-face 'flyspell-incorrect)
  '(ispell-program-name "aspell")
  '(minimap-mode t t)
- '(org-agenda-files '("~/orgbasics.org"))
+ '(org-agenda-files '("~/org-basics.org"))
  '(package-selected-packages '(auctex))
  '(preview-pdf-color-adjust-method 'compatible))
 (custom-set-faces
