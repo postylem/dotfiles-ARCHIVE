@@ -1,6 +1,6 @@
 """"" GENERAL SETTINGS
 
-set mouse=a                         " because it's useful
+set mouse=a                         " because my computer has a mouse
 set noerrorbells                    " no audio please
 set tabstop=2 softtabstop=2         " insert 2 spaces for a tab
 set shiftwidth=2                    " size of autoindent (should = tabstop)
@@ -14,8 +14,7 @@ set smartcase                       " ^ not if caps used (req. ignorecase)
 set linebreak                       " break at words not chars (with wrap)
 set background=dark                 " tell vim what the background is like
 set noswapfile
-"set nobackup " use undofile instead
-"set nowritebackup
+set nobackup nowritebackup          " use undofile instead
 set undofile                        " undodir default '~/.local/nvim/undo'
 set scrolloff=4                     " lines to keep above/below cursor
 "set signcolumn=yes                  " left gutter for git indication etc.

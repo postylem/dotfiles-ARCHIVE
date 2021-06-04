@@ -45,6 +45,7 @@ inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 " plugin-specific remaps in plugin/config-plugmaps.vim
 let mapleader=" "
 
+" stop typing :nohl all the time!
 map <Leader>/ :nohlsearch<CR>
 
 nnoremap <leader>h :wincmd h<cr>
@@ -56,19 +57,26 @@ nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
 nnoremap <silent> <leader>- :resize -1<cr>
 nnoremap <leader>= :resize +1<cr>
 
-" Terminal mappings
+" integrated terminal mappings
 tnoremap <esc> <c-\><c-n>
 if has('nvim')
-  nnoremap <silent> <c-c><c-c> :split term://zsh<cr>i
+  " mimic the default ':term' behav in vim
+  nnoremap <silent> <c-c><c-c> :split term://zsh<cr>
+  au TermOpen * startinsert
+  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+  " use c-w in terminal mode in nvim (already possible in vim)
   tnoremap <c-w>    <c-\><c-n><c-w>
   " No line numbers or relative line numbers in terminal buffer
   au TermOpen * setlocal nonumber norelativenumber
+  " feed another key after exiting, to really exit
+  au TermClose * call feedkeys("i")
 else
   nnoremap <silent> <c-c><c-c> :terminal<cr>
 endif
 
 """"" AUTOCOMMANDS
 
+" I find I like vimtex to clean up on exit.
 augroup MyVimtex
   autocmd!
   autocmd User VimtexEventQuit VimtexClean

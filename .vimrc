@@ -91,6 +91,23 @@ noremap <leader>C :Commentary<cr>
 "nnoremap <silent> <leader>gf :YcmCompleter FixIt<cr>
 map <Leader>/ :nohlsearch<CR>
 
+" integrated terminal mappings
+tnoremap <esc> <c-\><c-n>
+if has('nvim')
+  " mimic the default ':term' behav in vim
+  nnoremap <silent> <c-c><c-c> :split term://zsh<cr>
+  au TermOpen * startinsert
+  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+  " use c-w in terminal mode in nvim (already possible in vim)
+  tnoremap <c-w>    <c-\><c-n><c-w>
+  " No line numbers or relative line numbers in terminal buffer
+  au TermOpen * setlocal nonumber norelativenumber
+  " feed another key after exiting, to really exit
+  au TermClose * call feedkeys("i")
+else
+  nnoremap <silent> <c-c><c-c> :terminal<cr>
+endif
+
 
 " NERDTree things
 nnoremap <leader>n :NERDTreeFocus<CR>
