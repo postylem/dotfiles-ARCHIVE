@@ -1,8 +1,10 @@
 _This readme file is at `.github/README.md`, so it will be displayed when viewing the repo on GitHub._
 
+This file outlines how I version control my dotfiles, using a git repo with the worktree set to `$HOME`.
+
 # Using a (bare) git repo for dotfiles
 
-This is mostly following [Greg Owen's nice post](https://stegosaurusdormant.com/bare-git-repo/) explaining why and how to set up a bare git repo for dotfiles. See more detailed info there.
+This is mostly following [Greg Owen's nice post](https://stegosaurusdormant.com/bare-git-repo/) explaining why and how to set up a bare git repo for dotfiles. See more info there, or [this tutorial on Atlassian](https://www.atlassian.com/git/tutorials/dotfiles).
 
 Here's how I set this up:
 
