@@ -21,6 +21,7 @@ Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'mhinz/vim-startify'
+Plug 'bling/vim-bufferline'
 
 Plug 'nvim-telescope/telescope.nvim' |
       \ Plug 'nvim-lua/popup.nvim' |

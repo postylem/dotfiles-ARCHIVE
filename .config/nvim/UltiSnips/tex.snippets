@@ -83,24 +83,37 @@ endsnippet
 
 # my basic latex template
 
-snippet template "basic (xe)latex template"
-%!TEX program = xelatex
-\documentclass[11pt]{article}
-\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
-\usepackage{enumitem,booktabs} 
+snippet template "basic xelatex template"
+%!TEX program = latexmk -xelatex
+\documentclass{article}
+
+\usepackage{amsfonts,amssymb,amsthm}
+\usepackage{enumitem,booktabs}
 \usepackage[margin=1in]{geometry}
+
 \usepackage{fontspec}
 \setmainfont{Linux Libertine}
+
 \usepackage[%
-  natbib=true,backend=biber,sorting=nymdt,%
-  citestyle=authoryear,bibstyle=authoryear,%
-  url=false,doi=false,isbn=false%
-  ]{biblatex}
-\addbibresource{/Users/j/Library/texmf/bibtex/bib/all.bib} 
-% imports xcolor, imports and configs hyperref, defines nymdt sorting:
+natbib=true,backend=biber,sorting=nymdt,%
+citestyle=authoryear,bibstyle=authoryear,%
+url=false,doi=false,isbn=false%
+]{biblatex}
+\addbibresource{/Users/j/Library/texmf/bibtex/bib/all.bib}
+
+% jbib_links: makes nice links, and defines nymdt sorting.
+%   Imports mathtools, xcolor, hyperref, cleveref.
 \input{/Users/j/Library/texmf/custom/jbib_links.tex}
-\usepackage{cleveref} % must come after importing hyperref
-\input{/Users/j/Library/texmf/custom/jformat.tex} % general formatting things. Imports packages contour, ulem
+
+% jformat: general formatting things.
+%   Imports packages contour, ulem
+\input{/Users/j/Library/texmf/custom/jformat.tex}
+
+% kast: a nice box environment:
+%\input{/Users/j/Library/texmf/custom/kast.tex}
+
+% IT operators: for expectation \E{}, entropy \H{}, MI \I{} etc.
+%\input{/Users/j/Library/texmf/custom/information-theory-operators.tex}
 
 \newtheorem*{theorem}{Theorem}
 \theoremstyle{definition}

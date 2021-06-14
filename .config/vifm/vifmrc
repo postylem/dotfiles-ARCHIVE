@@ -1,4 +1,4 @@
-" vim: filetype=vifm :
+" vim: filetype=vim :
 " Sample configuration file for vifm on OSX (last updated: 9 September, 2020)
 " You can edit this file by hand.
 " The " character at the beginning of a line comments out the line.
@@ -11,6 +11,7 @@
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
 
+" set vicmd=vim
 set vicmd=nvim
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
@@ -310,13 +311,19 @@ fileviewer {*.docx},
 " 16-color terminal
 " fileviewer *.c,*.h highlight -O ansi -s dante %c
 "
+
+fileviewer *.tex pygmentize -O style=monokai -f console256 -l tex
+
 " Or leave it for automatic detection
 "
+fileviewer *[^/] highlight -O ansi -s monokai %c
+
+" pygmentize is a lot slower, but better
 " fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
 
 " Displaying pictures in terminal
 "
-" fileviewer *.jpg,*.png shellpic %c
+fileviewer *.jpg,*.png shellpic %c
 
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide
