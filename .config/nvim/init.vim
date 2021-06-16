@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
 Plug 'mbbill/undotree'
 Plug 'lervag/vimtex'
 Plug 'sirver/UltiSnips'
@@ -34,6 +35,24 @@ lua require('j')
 
 """"" EDITOR SETTINGS and `let`s
 set termguicolors " to get 256 colors in terminal
+set guifont="Fira Code:h14"
+
+""""" VV editor
+if exists('g:vv')
+  VVset fontfamily=Fira\ Mono
+  VVset fontsize=14
+  VVset letterspacing=-1
+  VVset lineheight=1.2
+
+  VVset windowheight=80%
+  VVset windowleft=0
+  VVset windowtop=0
+
+  " map cmd-s to write
+  nnoremap <D-s> :write<cr>
+  inoremap <D-s> <c-o>:write<cr>
+endif
+
 colorscheme gruvbox
 let g:netrw_liststyle=3 " to get default hierarchical netrw view
 
@@ -45,6 +64,13 @@ inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 """"" REMAPS (for basic Vim things)
 " plugin-specific remaps in plugin/config-plugmaps.vim
 let mapleader=" "
+
+" move between buffers
+nnoremap gb :buffers<CR>:buffer<Space>
+nnoremap <leader>b  :buffer <c-z>
+nnoremap <PageUp>   :bprevious<CR>
+nnoremap <PageDown> :bnext<CR>
+" See also ]b and [b from tpope/vim-unimpaired, of course.
 
 " stop typing :nohl all the time!
 map <Leader>/ :nohlsearch<CR>
