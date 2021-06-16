@@ -7,6 +7,9 @@ alias cat=ccat # for colourized cat. use \cat for the original
 # for my dotfiles.git repo, which is a bare repo in the home dir
 alias dotgit='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
+# for vimtex + zathura getting synctex to work, as described in this comment:
+# https://github.com/lervag/vimtex/issues/1737#issuecomment-759953886
+export DBUS_SESSION_BUS_ADDRESS='unix:path='$DBUS_LAUNCHD_SESSION_BUS_SOCKET
 
 # To automatically start at tmux session when ssh-ing
 # from https://stackoverflow.com/a/27614878/1676393

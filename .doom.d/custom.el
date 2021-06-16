@@ -11,7 +11,8 @@
  '(minimap-mode t t)
  '(org-agenda-files '("~/org-basics.org"))
  '(package-selected-packages '(auctex))
- '(preview-pdf-color-adjust-method 'compatible))
+ '(preview-pdf-color-adjust-method 'compatible)
+ '(send-mail-function 'sendmail-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
