@@ -316,7 +316,7 @@ fileviewer *.tex pygmentize -O style=monokai -f console256 -l tex
 
 " Or leave it for automatic detection
 "
-fileviewer *[^/] highlight -O ansi -s monokai %c
+fileviewer *[^/] highlight -O ansi -s dante %c
 
 " pygmentize is a lot slower, but better
 " fileviewer *[^/] pygmentize -O style=monokai -f console256 -g

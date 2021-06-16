@@ -2,8 +2,10 @@ set selection-clipboard clipboard
 set window-height 1100
 set window-width 850
 set guioptions ''
-set font "Fira Code 10"
+set font "Fira Code 12"
+set adjust-open "best-fit"
 
 set dbus-service true
 set synctex true
 set synctex-editor-command "vim --servername vim --remote +%{line} %{input}"
+set synctex-editor-command "nvr --remote +%{line} %{file}"
