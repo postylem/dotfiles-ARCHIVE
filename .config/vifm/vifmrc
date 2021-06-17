@@ -178,7 +178,8 @@ filetype {*.pdf},<application/pdf>
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " PostScript
-filetype {*.ps,*.eps,*.ps.gz},<application/postscript> open -a Preview.app
+" filetype {*.ps,*.eps,*.ps.gz},<application/postscript> open -a Preview.app
+filetype {*.ps,*.eps,*.ps.gz} open -a Preview.app
 
 " Djvu
 filetype {*.djvu},<image/vnd.djvu> open -a MacDjView.app
@@ -312,7 +313,7 @@ fileviewer {*.docx},
 " fileviewer *.c,*.h highlight -O ansi -s dante %c
 "
 
-fileviewer *.tex pygmentize -O style=monokai -f console256 -l tex
+fileviewer {*.tex},<text/x-tex> pygmentize -O style=monokai -f console256 -l tex
 
 " Or leave it for automatic detection
 "
