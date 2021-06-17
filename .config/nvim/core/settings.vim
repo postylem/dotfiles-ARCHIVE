@@ -11,7 +11,7 @@ set relativenumber                  " ^ relative (on all but the current)
 set showcmd                         " show current command in progress
 set ignorecase                      " for searching case-independent
 set smartcase                       " ^ not if caps used (req. ignorecase)
-set linebreak                       " break at words not chars (with wrap)
+se linebreak                       " break at words not chars (with wrap)
 set background=dark                 " tell vim what the background is like
 set noswapfile
 set nobackup nowritebackup          " use undofile instead
@@ -27,3 +27,7 @@ set wildmenu
 set foldcolumn=auto:9               " display up to 9 columns of folds
 set list                            " see some unruly whitespace chars
 set listchars=tab:>-,trail:@,extends:>,precedes:<,nbsp:~
+
+set conceallevel=2                  " useful for vimtex
+
+setlocal spell spelllang=en_ca,en_us

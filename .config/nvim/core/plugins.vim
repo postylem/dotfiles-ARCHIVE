@@ -1,23 +1,70 @@
-" NERDTree settings
+
+"{ Plugin installation
+""""" PLUGINS (vim-plug)
+call plug#begin('~/.vim/plugged')
+Plug 'liuchengxu/vista.vim'
+Plug 'gruvbox-community/gruvbox'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+Plug 'mbbill/undotree'
+Plug 'lervag/vimtex'
+Plug 'sirver/UltiSnips'
+Plug 'ervandew/supertab'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'vim-syntastic/syntastic'
+Plug 'Chiel92/vim-autoformat'
+Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'mhinz/vim-startify'
+Plug 'bling/vim-bufferline'
+
+Plug 'nvim-telescope/telescope.nvim' |
+      \ Plug 'nvim-lua/popup.nvim' |
+      \ Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+call plug#end()
+"}
+
+"{ Plugin settings
+"{{ Vim-plug settings
+"}}
+
+"{{ NERDTree settings
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if
-      \ argc() == 1
-      \ && isdirectory(argv()[0])
-      \ && !exists('s:std_in') |
-      \ execute 'NERDTree' argv()[0] |
-      \ execute 'cd '.argv()[0] |
-      \ endif
+" autocmd VimEnter * if
+"       \ argc() == 1
+"       \ && isdirectory(argv()[0])
+"       \ && !exists('s:std_in') |
+"       \ execute 'NERDTree' argv()[0] |
+"       \ execute 'cd '.argv()[0] |
+"       \ endif
+"}}
 
-" ------------------
-" vim-bufferline settings
+
+"{{ vista settings (universal-ctags navigator)
+"
+" How each level is indented and what to prepend.
+" This could make the display more compact or more spacious.
+" e.g., more compact: ["▸ ", ""]
+" Note: this option only works for the kind renderer, not the tree renderer.
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'ctags'
+"}}
+
+
+"{{ vim-bufferline settings
 
 let g:bufferline_echo = 0
+"}}
 
 
-
-" ------------------
-" vim-airline settings
+"{{ vim-airline settings
 
 " only display encoding/eol type if it *isn't* 'utf-8[unix]'
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
@@ -77,9 +124,10 @@ let g:airline_mode_map = {
         \ 'V'      : 'V',
         \ ''     : 'V',
         \ }
+"}}
 
-" ------------------
-" Syntastic settings
+
+"{{ Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -102,11 +150,11 @@ let g:syntastic_tex_chktex_quiet_messages = {
         \   'is normally not followed by'
         \ ],
         \}
+"}}
 
-" ------------------
-" vimtex settings
-set conceallevel=2
-let g:vimtex_view_method='skim'
+
+"{{ vimtex settings
+
 let g:vimtex_toc_config={
       \'split_pos'  : ':vert :botright',
       \'split_width':  50,
@@ -115,6 +163,10 @@ let g:vimtex_syntax_conceal_cites = {
       \ 'type': 'brackets',
       \ 'icon': '📖',
       \}
+
+let g:vimtex_format_enabled=1
+
+let g:vimtex_view_method='skim'
 
 " For backward sync with nvim+Skim
 " https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/
@@ -132,9 +184,10 @@ augroup vimtex_common
   autocmd!
   autocmd FileType tex call SetServerName()
 augroup END
+"}}
 
-" ------------------
-" Ultisnips settings
+
+"{{ Ultisnips settings
 let g:UltiSnipsEditSplit="vertical"
 "" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -149,6 +202,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:snips_author="jacob"
 let g:snips_email="postylem@gmail.com"
 let g:snips_github="https://github.com/postylem"
+"}}
 
-" ------------------
+
 " telescope.nvim setup is in lua/j/telescope.lua
+"}
