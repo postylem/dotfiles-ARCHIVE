@@ -1,9 +1,4 @@
-
-set termguicolors " to get 256 colors in terminal
-set guifont="Fira Code:h14"
-
-
-""""" EDITOR SETTINGS and `let`s
+""""" Basic editor ui settings
 
 " map c-s to write for quick saving
 nnoremap <c-s> :write<cr>
@@ -24,5 +19,3 @@ if exists('g:vv')
   nnoremap <D-s> :w<cr>
   inoremap <D-s> <c-o>:w<cr>
 endif
-
-colorscheme gruvbox

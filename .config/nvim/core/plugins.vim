@@ -1,9 +1,15 @@
 
 "{ Plugin installation
+"
+" " Instead of the standard, which is the below:
+" let g:plug_home=has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged'
+" " I'll use the vim location for now, even though I'm using nvim
+let g:plug_home='~/.vim/plugged'
+" (if you want to switch this, might need to run the install of vim-plug again?)
+
 """"" PLUGINS (vim-plug)
-call plug#begin('~/.vim/plugged')
-Plug 'liuchengxu/vista.vim'
-Plug 'gruvbox-community/gruvbox'
+call plug#begin(g:plug_home)
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
@@ -14,16 +20,42 @@ Plug 'ervandew/supertab'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'Chiel92/vim-autoformat'
-Plug 'preservim/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'JuliaEditorSupport/julia-vim'
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'JuliaEditorSupport/julia-vim'
 Plug 'mhinz/vim-startify'
 Plug 'bling/vim-bufferline'
+Plug 'vim-airline/vim-airline'
+
+Plug 'gruvbox-community/gruvbox'
+" or, for a lua version of gruvbox w treesitter (somewhat slower?)
+" Plug 'rktjmp/lush.nvim' | 'npxbr/gruvbox.nvim'
+
+"{{ Navigation and tags plugin
+" Only install these plugins if ctags are installed on the system
+if executable('ctags')
+  " plugin to manage your tags
+  Plug 'ludovicchabant/vim-gutentags'
+  " show file tags in vim window
+  Plug 'liuchengxu/vista.vim'
+endif
+"}}
 
 Plug 'nvim-telescope/telescope.nvim' |
       \ Plug 'nvim-lua/popup.nvim' |
       \ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" Markdown previewing
+if g:is_win || g:is_mac
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+endif
+
+" Show the content of register in preview window
+Plug 'junegunn/vim-peekaboo'
+
+" If you need help for vim-plug itself (e.g. `:help plug-options`),
+" (this could be omitted; it's just here for the helpfile :)
+Plug 'junegunn/vim-plug'
 call plug#end()
 "}
 
