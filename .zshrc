@@ -7,6 +7,8 @@ alias cat=ccat # for colourized cat. use \cat for the original
 # for my dotfiles.git repo, which is a bare repo in the home dir
 alias dotgit='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
+# set default (n)vim editor for easy access
+alias v=nvim
 # for vimtex + zathura getting synctex to work, as described in this comment:
 # https://github.com/lervag/vimtex/issues/1737#issuecomment-759953886
 export DBUS_SESSION_BUS_ADDRESS='unix:path='$DBUS_LAUNCHD_SESSION_BUS_SOCKET
