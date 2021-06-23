@@ -7,6 +7,7 @@
 " Organization taken from http://github.com/jdhao/nvim-config
 " Note, order matters (variables first)
 let g:config_file_list = ['variables.vim',
+      \ 'coc.vim',
       \ 'autocommands.vim',
       \ 'mappings.vim',
       \ 'plugins.vim',
@@ -32,5 +33,3 @@ lua require('entrance')
 
 """"" AUTOCOMMANDS
 " are in core/autocommands.vim
-
-

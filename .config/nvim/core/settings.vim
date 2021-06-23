@@ -18,16 +18,25 @@ set clipboard=unnamedplus           " copy/paste between vim and system
 set wildmenu
 set foldcolumn=auto:9               " display up to 9 columns of folds
 set list                            " see some unruly whitespace chars
-set noswapfile nobackup nowritebackup " use undofile instead
+set noswapfile
+set nobackup nowritebackup          " use undofile instead (also for coc compatible)
 set undofile                        " undodir default '~/.local/nvim/undo'
-"set signcolumn=yes                  " left gutter for git indication etc.
+set updatetime=300                  " default is 4000 = 4s. too slow!
 set hlsearch                        " highlight search results
 set incsearch                       " display incremental search results
 set conceallevel=2                  " useful for vimtex
 set listchars=tab:>-,trail:@,extends:>,precedes:<,nbsp:~
 setlocal spell spelllang=en_ca,en_us
 
-set termguicolors " to get 256 colors in terminal
-set guifont="Fira Code:h14"
-set background=dark                 " tell vim what the background is like
-colorscheme gruvbox                 " it's gruvy
+" The signcolum is a left gutter for git indication etc.
+" Always show the signcolumn, otherwise coc will shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " with this patch, nvim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+set termguicolors " to get 256 colors in terminal. 
+" highlight settings in ./ui.vim

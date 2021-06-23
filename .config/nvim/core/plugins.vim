@@ -1,34 +1,85 @@
 
-"{ Plugin installation
+"{{{ Plugin installation
 "
 " " Instead of the standard, which is the below:
 " let g:plug_home=has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged'
 " " I'll use the vim location for now, even though I'm using nvim
 let g:plug_home='~/.vim/plugged'
-" (if you want to switch this, might need to run the install of vim-plug again?)
+" (if I want to switch this,
+" might need to run the install of vim-plug, and maybe coc again?)
 
 """"" PLUGINS (vim-plug)
 call plug#begin(g:plug_home)
+" If you need help for vim-plug itself (e.g. `:help plug-options`),
+" (this could be omitted; it's just here for the helpfile :)
+Plug 'junegunn/vim-plug'
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
+" Show the content of register in preview window
+Plug 'junegunn/vim-peekaboo'
+
+" Pairs of handy bracket mappings like `[b` / `]b`
 Plug 'tpope/vim-unimpaired'
+
+"{{ Git plugins
+" vim-fugitive is the standard. Use the :Git command
+Plug 'tpope/vim-fugitive'
+" show change/delete/add in vim's sign column / gutter
+Plug 'mhinz/vim-signify'
+"}}
+
+"{{{ General editing plugins
+" Navigate undos in a tree
 Plug 'mbbill/undotree'
-Plug 'lervag/vimtex'
+" Easy comment/uncomment with :Commentary command
+Plug 'tpope/vim-commentary'
 Plug 'sirver/UltiSnips'
-Plug 'ervandew/supertab'
-Plug 'ycm-core/YouCompleteMe'
-Plug 'vim-syntastic/syntastic'
+
+" Plug 'ervandew/supertab'
+"}}}
+
+"{{ Linting, formating
+" Plug 'ycm-core/YouCompleteMe'
+
+" Conquer of Completion: Use release branch (recommended)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" syntastic is a classic Vim linter
+" Plug 'vim-syntastic/syntastic'
+" using ALE is perhaps better, it being asyncronous, and will work with coc,
+" see https://github.com/dense-analysis/ale#faq-coc-nvim on how.
+Plug 'dense-analysis/ale'
+
+" Autoformatting
+" Plug 'sbdchd/neoformat', { 'on': 'Neoformat' }
 Plug 'Chiel92/vim-autoformat'
+"}}
+
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-" Plug 'JuliaEditorSupport/julia-vim'
-Plug 'mhinz/vim-startify'
-Plug 'bling/vim-bufferline'
-Plug 'vim-airline/vim-airline'
+
+if !exists('g:started_by_firenvim')
+  " nice startpage (configurable with bookmarks and useful for saving sessions)
+  Plug 'mhinz/vim-startify'
+  " nice useful statusline
+  Plug 'bling/vim-bufferline'
+  Plug 'vim-airline/vim-airline'
+endif
 
 Plug 'gruvbox-community/gruvbox'
-" or, for a lua version of gruvbox w treesitter (somewhat slower?)
-" Plug 'rktjmp/lush.nvim' | 'npxbr/gruvbox.nvim'
+" Or, for a fast version, but a little different, gruvbox8
+" customization I find necessary in settings.vim
+Plug 'lifepillar/vim-gruvbox8'
+
+
+"{{ Plugin to deal with URL
+" Highlight URLs inside vim
+Plug 'itchyny/vim-highlighturl'
+
+" For Windows and Mac, we can open an URL in the browser.
+if g:is_win || g:is_mac
+  " open URL in browser
+  Plug 'tyru/open-browser.vim'
+endif
+"}}
 
 "{{ Navigation and tags plugin
 " Only install these plugins if ctags are installed on the system
@@ -45,22 +96,78 @@ Plug 'nvim-telescope/telescope.nvim' |
       \ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-" Markdown previewing
+"{{ Language-specific plugins
+
+" Only use these plugin on Windows and Mac and when LaTeX is installed
+if ( g:is_win || g:is_mac ) && executable('latex')
+  " vimtex use autoload feature of Vim, so it is not necessary to use `for`
+  " keyword of vim-plug to try to lazy-load it,
+  " see https://github.com/junegunn/vim-plug/issues/785
+  Plug 'lervag/vimtex'
+
+  " Plug 'matze/vim-tex-fold', {'for': 'tex'}
+  " Plug 'Konfekt/FastFold'
+endif
+
+" Plug 'JuliaEditorSupport/julia-vim'
+
+" Plugins for markdown writing:
+" Vim tabular plugin for manipulate tabular, required by markdown plugins
+Plug 'godlygeek/tabular', {'on': 'Tabularize'}
+" markdown plugin
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Faster footnote generation
+" Plug 'vim-pandoc/vim-markdownfootnotes', { 'for': 'markdown' }
+" Markdown JSON header highlight plugin
+Plug 'elzr/vim-json', { 'for': ['json', 'markdown'] }
+" Markdown previewing (awesome. Only for Mac and Windows)
 if g:is_win || g:is_mac
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 endif
+" if g:is_mac
+"   " For grammar checking
+"   Plug 'rhysd/vim-grammarous'
+" endif
+Plug 'chrisbra/unicode.vim'
+"}}
 
-" Show the content of register in preview window
-Plug 'junegunn/vim-peekaboo'
-
-" If you need help for vim-plug itself (e.g. `:help plug-options`),
-" (this could be omitted; it's just here for the helpfile :)
-Plug 'junegunn/vim-plug'
 call plug#end()
-"}
+"}}}
 
 "{ Plugin settings
 "{{ Vim-plug settings
+"}}
+
+"{{ vim-startify settings
+" color settings / highlight are in ./ui.vim
+let g:startify_bookmarks = [ {'c': '~/.config/nvim'}, '~/.zshrc' ]
+let g:startify_files_number = 6
+function! s:list_commits()
+  let git = 'git -C '. getcwd()
+  let commits = systemlist(git .' log --oneline | head -n' . g:startify_files_number)
+  let git = 'Git'
+  return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
+endfunction
+let g:startify_lists = [
+      \ { 'type': 'files',     'header': ['   MRU',]            },
+      \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ { 'header': ['   Commits'],        'type': function('s:list_commits') },
+      \ ]
+
+"}}
+
+"{{ open-broswer.vim settings
+if g:is_win || g:is_mac
+  " Disable netrw's gx mapping.
+  let g:netrw_nogx = 1
+
+  " Use another mapping for the open URL method
+  nmap <leader>o <Plug>(openbrowser-smart-search)
+  xmap <leader>o <Plug>(openbrowser-smart-search)
+endif
 "}}
 
 "{{ NERDTree settings
@@ -74,7 +181,6 @@ autocmd StdinReadPre * let s:std_in=1
 "       \ execute 'cd '.argv()[0] |
 "       \ endif
 "}}
-
 
 "{{ vista settings (universal-ctags navigator)
 "
@@ -137,55 +243,132 @@ let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
 
 let g:airline_mode_map = {
-        \ '__'     : '-',
-        \ 'c'      : 'C',
-        \ 'i'      : 'I',
-        \ 'ic'     : 'I',
-        \ 'ix'     : 'I',
-        \ 'n'      : 'N',
-        \ 'multi'  : 'M',
-        \ 'ni'     : 'N',
-        \ 'no'     : 'N',
-        \ 'R'      : 'R',
-        \ 'Rv'     : 'R',
-        \ 's'      : 'S',
-        \ 'S'      : 'S',
-        \ ''     : 'S',
-        \ 't'      : 'T',
-        \ 'v'      : 'V',
-        \ 'V'      : 'V',
-        \ ''     : 'V',
-        \ }
+      \ '__'     : '-',
+      \ 'c'      : 'C',
+      \ 'i'      : 'I',
+      \ 'ic'     : 'I',
+      \ 'ix'     : 'I',
+      \ 'n'      : 'N',
+      \ 'multi'  : 'M',
+      \ 'ni'     : 'N',
+      \ 'no'     : 'N',
+      \ 'R'      : 'R',
+      \ 'Rv'     : 'R',
+      \ 's'      : 'S',
+      \ 'S'      : 'S',
+      \ ''     : 'S',
+      \ 't'      : 'T',
+      \ 'v'      : 'V',
+      \ 'V'      : 'V',
+      \ ''     : 'V',
+      \ }
 "}}
 
 
-"{{ Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"{{ Coc settings
+" coc.nvim has a lot of settings, so they are seperate: see ./coc.vim
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_aggregate_errors = 1
+" One that I'll put here though, is the remap of K for coc-vimtex in particular
+" This is equivalent to putting the following in your
+" `$HOME/.vim/after/ftplugin/tex.vim:`
+"    map <buffer> K <Plug>(vimtex-doc-package)
+"
+nnoremap <silent> K :call <sid>show_documentation()<cr>
+function! s:show_documentation()
+  if index(['vim', 'help'], &filetype) >= 0
+    execute 'help ' . expand('<cword>')
+  elseif &filetype ==# 'tex'
+    VimtexDocPackage
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
-let g:syntastic_tex_checkers = ['chktex']
-
-" ignore overeager chktex warnings by just regexing them
-" TODO: put this in the .chktexrc file somehow
-let g:syntastic_tex_chktex_quiet_messages = {
-      \ 'regex': [
-        \   'You should enclose the previous parenthesis with',
-        \   'is normally not followed by'
-        \ ],
-        \}
 "}}
 
+"{{ ALE settings
+let g:ale_fixers = {
+      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'tex': ['latexindent'],
+      \}
+"}}
+
+"{{ Airline settings
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#ale#enabled = 1
+"}}
+
+"{{ signify settings
+"}}
+
+""{{ Syntastic settings
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_error_symbol = "✗"
+"let g:syntastic_warning_symbol = "⚠"
+"let g:syntastic_aggregate_errors = 1
+
+"let g:syntastic_tex_checkers = ['chktex']
+
+"" ignore overeager chktex warnings by just regexing them
+"" TODO: put this in the .chktexrc file somehow
+"let g:syntastic_tex_chktex_quiet_messages = {
+"      \ 'regex': [
+"        \   'You should enclose the previous parenthesis with',
+"        \   'is normally not followed by'
+"        \ ],
+"        \}
+""}}
+
+
+"{{ vim-markdowm settings
+
+let g:vim_markdown_folding_style_pythonic = 1
+" To prevent foldtext from being set:
+let g:vim_markdown_override_foldtext = 1
+let g:vim_markdown_math = 1
+"}}
 
 "{{ vimtex settings
+
+let g:vimtex_compiler_latexmk_engines = {
+      \ '_'                : '-xelatex',
+      \}
+
+" Special rhs styles (based on vimtex#imaps#style_math in
+" https://github.com/lervag/vimtex/blob/master/autoload/vimtex/imaps.vim)
+"{{{
+function! MyStyleString(command)
+  if vimtex#syntax#in_mathzone()
+    call inputsave()
+    let user_input = input('Enter string to style: ')
+    call inputrestore()
+    return '\' . a:command . '{' . user_input . '}'
+  endif
+endfunction
+
+" Adding to the VimtexImapsList (see :h vimtex-imaps)
+call vimtex#imaps#add_map({
+      \ 'lhs' : 'r',
+      \ 'rhs' : 'vimtex#imaps#style_math("mathrm")',
+      \ 'expr' : 1,
+      \ 'leader' : '#',
+      \ 'wrapper' : 'vimtex#imaps#wrap_math'
+      \})
+call vimtex#imaps#add_map({
+      \ 'lhs' : 'R',
+      \ 'rhs' : 'MyStyleString("mathrm")',
+      \ 'expr' : 1,
+      \ 'leader' : '#',
+      \ 'wrapper' : 'vimtex#imaps#wrap_math'
+      \})
+" }}}
 
 let g:vimtex_toc_config={
       \'split_pos'  : ':vert :botright',
@@ -220,13 +403,18 @@ augroup END
 
 
 "{{ Ultisnips settings
+
 let g:UltiSnipsEditSplit="vertical"
-"" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" make YCM compatible with UltiSnips (if desired, set
+" UltiSnipsExpandTrigger to '<tab>', and use supertab to do the following.
+" However, I'll leave tab free for coc or whatever)
+" let g:SuperTabDefaultCompletionType = '<C-n>'
+
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsListSnippets = "<c-tab>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"

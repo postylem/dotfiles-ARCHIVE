@@ -1,0 +1,7 @@
+{
+  "diagnostic.displayByAle": true,
+  "snippets.ultisnips.enable": true,
+  "snippets.ultisnips.directories": [
+    "UltiSnips"
+  ]
+}
