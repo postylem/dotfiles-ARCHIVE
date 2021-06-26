@@ -1,3 +1,9 @@
+" Description: loads and configures nvim plugins
+"   this file is intended to be included from $HOME/.config/nvim/init.vim
+" Author: jacob louis hoover
+" Date: summer 2021
+
+"{{{ Loading plugins
 
 "{{{ Plugin installation
 "
@@ -7,8 +13,9 @@
 let g:plug_home='~/.vim/plugged'
 " (if I want to switch this,
 " might need to run the install of vim-plug, and maybe coc again?)
+"}}}
 
-""""" PLUGINS (vim-plug)
+"{{{ PLUGINS (vim-plug)
 call plug#begin(g:plug_home)
 " If you need help for vim-plug itself (e.g. `:help plug-options`),
 " (this could be omitted; it's just here for the helpfile :)
@@ -20,12 +27,12 @@ Plug 'junegunn/vim-peekaboo'
 " Pairs of handy bracket mappings like `[b` / `]b`
 Plug 'tpope/vim-unimpaired'
 
-"{{ Git plugins
+"{{{ Git plugins
 " vim-fugitive is the standard. Use the :Git command
 Plug 'tpope/vim-fugitive'
 " show change/delete/add in vim's sign column / gutter
 Plug 'mhinz/vim-signify'
-"}}
+"}}}
 
 "{{{ General editing plugins
 " Navigate undos in a tree
@@ -37,7 +44,7 @@ Plug 'sirver/UltiSnips'
 " Plug 'ervandew/supertab'
 "}}}
 
-"{{ Linting, formating
+"{{{ Linting, formating
 " Plug 'ycm-core/YouCompleteMe'
 
 " Conquer of Completion: Use release branch (recommended)
@@ -52,8 +59,9 @@ Plug 'dense-analysis/ale'
 " Autoformatting
 " Plug 'sbdchd/neoformat', { 'on': 'Neoformat' }
 Plug 'Chiel92/vim-autoformat'
-"}}
+"}}}
 
+"{{{ UI and theme plugins
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 
 if !exists('g:started_by_firenvim')
@@ -67,10 +75,10 @@ endif
 Plug 'gruvbox-community/gruvbox'
 " Or, for a fast version, but a little different, gruvbox8
 " customization I find necessary in settings.vim
-Plug 'lifepillar/vim-gruvbox8'
+" Plug 'lifepillar/vim-gruvbox8'
+"}}}
 
-
-"{{ Plugin to deal with URL
+"{{{ Plugin to deal with URL
 " Highlight URLs inside vim
 Plug 'itchyny/vim-highlighturl'
 
@@ -79,9 +87,9 @@ if g:is_win || g:is_mac
   " open URL in browser
   Plug 'tyru/open-browser.vim'
 endif
-"}}
+"}}}
 
-"{{ Navigation and tags plugin
+"{{{ Navigation and tags plugin
 " Only install these plugins if ctags are installed on the system
 if executable('ctags')
   " plugin to manage your tags
@@ -89,14 +97,16 @@ if executable('ctags')
   " show file tags in vim window
   Plug 'liuchengxu/vista.vim'
 endif
-"}}
 
+" Fuzzy finder popup search
 Plug 'nvim-telescope/telescope.nvim' |
       \ Plug 'nvim-lua/popup.nvim' |
       \ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-"{{ Language-specific plugins
+"}}}
+
+"{{{ Language-specific plugins
 
 " Only use these plugin on Windows and Mac and when LaTeX is installed
 if ( g:is_win || g:is_mac ) && executable('latex')
@@ -106,39 +116,39 @@ if ( g:is_win || g:is_mac ) && executable('latex')
   Plug 'lervag/vimtex'
 
   " Plug 'matze/vim-tex-fold', {'for': 'tex'}
-  " Plug 'Konfekt/FastFold'
+  Plug 'Konfekt/FastFold'
 endif
 
 " Plug 'JuliaEditorSupport/julia-vim'
 
-" Plugins for markdown writing:
-" Vim tabular plugin for manipulate tabular, required by markdown plugins
-Plug 'godlygeek/tabular', {'on': 'Tabularize'}
-" markdown plugin
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-" Faster footnote generation
-" Plug 'vim-pandoc/vim-markdownfootnotes', { 'for': 'markdown' }
-" Markdown JSON header highlight plugin
-Plug 'elzr/vim-json', { 'for': ['json', 'markdown'] }
+" Plugin for pandoc (and of course pandoc-syntax too)
+" Assumes markdown files are pandoc markdown, and uses filetype=pandoc
+Plug 'vim-pandoc/vim-pandoc' | Plug 'vim-pandoc/vim-pandoc-syntax'
+
+"{{{ " Plugins for markdown writing without pandoc:
+" " Vim tabular plugin for manipulate tabular, required by markdown plugins
+" Plug 'godlygeek/tabular', {'on': 'Tabularize'}
+" " markdown plugin
+" Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" " Markdown JSON header highlight plugin
+" Plug 'elzr/vim-json', { 'for': ['json', 'markdown'] }
+"}}}
 " Markdown previewing (awesome. Only for Mac and Windows)
 if g:is_win || g:is_mac
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 endif
-" if g:is_mac
-"   " For grammar checking
-"   Plug 'rhysd/vim-grammarous'
-" endif
+
 Plug 'chrisbra/unicode.vim'
-"}}
+"}}}
 
 call plug#end()
 "}}}
 
-"{ Plugin settings
-"{{ Vim-plug settings
-"}}
+"}}}
 
-"{{ vim-startify settings
+"{{{ Configuring plugins
+
+"{{{ vim-startify settings
 " color settings / highlight are in ./ui.vim
 let g:startify_bookmarks = [ {'c': '~/.config/nvim'}, '~/.zshrc' ]
 let g:startify_files_number = 6
@@ -157,9 +167,9 @@ let g:startify_lists = [
       \ { 'header': ['   Commits'],        'type': function('s:list_commits') },
       \ ]
 
-"}}
+"}}}
 
-"{{ open-broswer.vim settings
+"{{{ open-broswer.vim settings
 if g:is_win || g:is_mac
   " Disable netrw's gx mapping.
   let g:netrw_nogx = 1
@@ -168,9 +178,9 @@ if g:is_win || g:is_mac
   nmap <leader>o <Plug>(openbrowser-smart-search)
   xmap <leader>o <Plug>(openbrowser-smart-search)
 endif
-"}}
+"}}}
 
-"{{ NERDTree settings
+"{{{ NERDTree settings
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if
@@ -180,9 +190,9 @@ autocmd StdinReadPre * let s:std_in=1
 "       \ execute 'NERDTree' argv()[0] |
 "       \ execute 'cd '.argv()[0] |
 "       \ endif
-"}}
+"}}}
 
-"{{ vista settings (universal-ctags navigator)
+"{{{ vista settings (universal-ctags navigator)
 "
 " How each level is indented and what to prepend.
 " This could make the display more compact or more spacious.
@@ -193,16 +203,14 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " Executive used when opening vista sidebar without specifying it.
 " See all the avaliable executives via `:echo g:vista#executives`.
 let g:vista_default_executive = 'ctags'
-"}}
+"}}}
 
-
-"{{ vim-bufferline settings
+"{{{ vim-bufferline settings
 
 let g:bufferline_echo = 0
-"}}
+"}}}
 
-
-"{{ vim-airline settings
+"{{{ vim-airline settings
 
 " only display encoding/eol type if it *isn't* 'utf-8[unix]'
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
@@ -262,10 +270,9 @@ let g:airline_mode_map = {
       \ 'V'      : 'V',
       \ ''     : 'V',
       \ }
-"}}
+"}}}
 
-
-"{{ Coc settings
+"{{{ Coc settings
 " coc.nvim has a lot of settings, so they are seperate: see ./coc.vim
 
 " One that I'll put here though, is the remap of K for coc-vimtex in particular
@@ -284,24 +291,21 @@ function! s:show_documentation()
   endif
 endfunction
 
-"}}
+"}}}
 
-"{{ ALE settings
+"{{{ ALE settings
 let g:ale_fixers = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
       \   'tex': ['latexindent'],
       \}
-"}}
+"}}}
 
-"{{ Airline settings
+"{{{ Airline settings
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#ale#enabled = 1
-"}}
+"}}}
 
-"{{ signify settings
-"}}
-
-""{{ Syntastic settings
+""{{{ Syntastic settings
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
@@ -324,18 +328,47 @@ let g:airline#extensions#ale#enabled = 1
 "        \   'is normally not followed by'
 "        \ ],
 "        \}
-""}}
+""}}}
 
+"{{{ signify settings
+" Change the 'change' sign from the default '!'
+let g:signify_sign_change = '~'
+"}}}
 
-"{{ vim-markdowm settings
+"{{{ vim-pandoc settings
+"place to look for references globally (assumes that 'g' is in the
+"g:pandoc#biblio#sources variable string, which it is by default.
+"See `:h vim-pandoc-bibliographies-module`)
+let g:pandoc#biblio#bibs = ['/Users/j/Library/texmf/bibtex/bib/all.bib']
+"}}}
+
+"{{{ vim-markdowm settings
 
 let g:vim_markdown_folding_style_pythonic = 1
 " To prevent foldtext from being set:
-let g:vim_markdown_override_foldtext = 1
+" let g:vim_markdown_override_foldtext = 1
 let g:vim_markdown_math = 1
-"}}
+"}}}
 
-"{{ vimtex settings
+"{{{ markdown-preview.nvim settings
+
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0
+    \ }
+
+"}}}
+
+"{{{ vimtex settings
 
 let g:vimtex_compiler_latexmk_engines = {
       \ '_'                : '-xelatex',
@@ -399,10 +432,9 @@ augroup vimtex_common
   autocmd!
   autocmd FileType tex call SetServerName()
 augroup END
-"}}
+"}}}
 
-
-"{{ Ultisnips settings
+"{{{ Ultisnips settings
 
 let g:UltiSnipsEditSplit="vertical"
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -422,8 +454,10 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:snips_author="jacob"
 let g:snips_email="postylem@gmail.com"
 let g:snips_github="https://github.com/postylem"
-"}}
-
+"}}}
 
 " telescope.nvim setup is in lua/j/telescope.lua
-"}
+"}}}
+
+
+" vim:foldmethod=marker:foldlevel=1

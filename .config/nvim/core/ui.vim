@@ -4,6 +4,7 @@
 nnoremap <c-s> :write<cr>
 inoremap <c-s> <c-o>:write<cr>
 
+
 """"" VV editor
 if exists('g:vv')
   VVset fontfamily=FiraMono\ Nerd\ Font\ Mono
@@ -25,9 +26,13 @@ endif
 
 set guifont="Fira Code:h14"
 set background=dark                 " tell vim what the background is like
-colorscheme gruvbox8                " it's gruvy
+" gruvbox settings must come before colorscheme is set
+let g:gruvbox_invert_selection=0
+colorscheme gruvbox                 " be gruvy (or gruvbox8)
 
-if g:colors_name=='gruvbox8'
+if g:colors_name[:7]=='gruvbox8'
+  " The default for the vert bar is italic which is silly
+  hi! link netrwTreeBar Delimiter
   " I find the defaults for Startify horrid.
   hi! link StartifyBracket Identifier
   hi! link StartifyFile Ignore
@@ -45,6 +50,6 @@ if g:colors_name=='gruvbox8'
   hi SpellLocal guifg=NONE gui=undercurl
 endif
 
-hi SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
-hi SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
-hi SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
+" hi SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
+" hi SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
+" hi SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE

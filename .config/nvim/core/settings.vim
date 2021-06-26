@@ -17,7 +17,6 @@ set colorcolumn=+0                  " color at n columns past 'textwidth'
 set clipboard=unnamedplus           " copy/paste between vim and system
 set wildmenu
 set foldcolumn=auto:9               " display up to 9 columns of folds
-set list                            " see some unruly whitespace chars
 set noswapfile
 set nobackup nowritebackup          " use undofile instead (also for coc compatible)
 set undofile                        " undodir default '~/.local/nvim/undo'
@@ -25,6 +24,7 @@ set updatetime=300                  " default is 4000 = 4s. too slow!
 set hlsearch                        " highlight search results
 set incsearch                       " display incremental search results
 set conceallevel=2                  " useful for vimtex
+set list                            " see some unruly whitespace chars
 set listchars=tab:>-,trail:@,extends:>,precedes:<,nbsp:~
 setlocal spell spelllang=en_ca,en_us
 
