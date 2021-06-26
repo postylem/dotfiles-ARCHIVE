@@ -1,6 +1,9 @@
 _This readme file is at `.github/README.md`, so it will be displayed when viewing the repo on GitHub._
 
 This file outlines how I version control my dotfiles, using a git repo with the worktree set to `$HOME`.
+For instance, I use this to backup and version control 
+
+- my [Neovim config](../.config/nvim). This is probably the thing in here that I've spent the most time configuring.
 
 # Using a (bare) git repo for dotfiles
 
