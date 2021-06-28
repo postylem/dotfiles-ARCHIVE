@@ -21,12 +21,6 @@ call plug#begin(g:plug_home)
 " (this could be omitted; it's just here for the helpfile :)
 Plug 'junegunn/vim-plug'
 
-" Show the content of register in preview window
-Plug 'junegunn/vim-peekaboo'
-
-" Pairs of handy bracket mappings like `[b` / `]b`
-Plug 'tpope/vim-unimpaired'
-
 "{{{ Git plugins
 " vim-fugitive is the standard. Use the :Git command
 Plug 'tpope/vim-fugitive'
@@ -40,8 +34,14 @@ Plug 'mbbill/undotree'
 " Easy comment/uncomment with :Commentary command
 Plug 'tpope/vim-commentary'
 Plug 'sirver/UltiSnips'
-
 " Plug 'ervandew/supertab'
+
+" Show the content of register in preview window
+Plug 'junegunn/vim-peekaboo'
+
+" conveniently interactively tabularize text based on delimiters
+Plug 'junegunn/vim-easy-align'
+
 "}}}
 
 "{{{ Linting, formating
@@ -90,6 +90,13 @@ endif
 "}}}
 
 "{{{ Navigation and tags plugin
+
+" Pairs of handy bracket mappings like `[b` / `]b`
+Plug 'tpope/vim-unimpaired'
+
+" adds more text objects to do more powerful editing like `din)` to delete text
+" in next parentheses for instance
+Plug 'wellle/targets.vim'
 " Only install these plugins if ctags are installed on the system
 if executable('ctags')
   " plugin to manage your tags
@@ -151,7 +158,7 @@ call plug#end()
 "{{{ vim-startify settings
 " color settings / highlight are in ./ui.vim
 let g:startify_bookmarks = [ {'c': '~/.config/nvim'}, '~/.zshrc' ]
-let g:startify_files_number = 6
+let g:startify_files_number = 12
 function! s:list_commits()
   let git = 'git -C '. getcwd()
   let commits = systemlist(git .' log --oneline | head -n' . g:startify_files_number)
@@ -203,6 +210,15 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " Executive used when opening vista sidebar without specifying it.
 " See all the avaliable executives via `:echo g:vista#executives`.
 let g:vista_default_executive = 'ctags'
+"}}}
+
+"{{{ vim-easy-align settings
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 "}}}
 
 "{{{ vim-bufferline settings
