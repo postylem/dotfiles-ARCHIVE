@@ -1,5 +1,7 @@
 "{Remaps
-"
+" puts the bibtex corresponding to the doi in the system clipboard
+nnoremap <silent> <leader>pp :DOI2bib "<c-r>+"<cr>
+
 "{{ Miscellaneous remaps
 " Edit and reload init.vim quickly
 nnoremap <silent> <leader>ev :<C-U>tabnew $MYVIMRC <bar> tcd %:h<cr>

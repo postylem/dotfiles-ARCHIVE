@@ -29,6 +29,16 @@ Plug 'mhinz/vim-signify'
 "}}}
 
 "{{{ General editing plugins
+
+" Add/delete surroundings of a text object
+" like `sdb` to take `(foo)` or `[foo]` to `foo`
+" I like this in addition to wellle/targets.vim so I can do things
+" like `sainb` to add a bracket _inside the *next* bracketed text object_
+Plug 'machakann/vim-sandwich'
+" Use sandwich instead of surround.vim, which does mostly just a subset of the
+" same things.
+" Plug 'tpope/surround.vim'
+
 " Navigate undos in a tree
 Plug 'mbbill/undotree'
 " Easy comment/uncomment with :Commentary command
@@ -247,6 +257,9 @@ let g:airline_section_z = airline#section#create(['linenr', ':', 'colnr'])
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
+" let g:airline#extensions#tabline#show_buffers = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 " powerline symbols
 let g:airline_left_sep = ''
@@ -476,4 +489,4 @@ let g:snips_github="https://github.com/postylem"
 "}}}
 
 
-" vim:foldmethod=marker:foldlevel=1
+" vim:foldmethod=marker:foldlevelstart=1

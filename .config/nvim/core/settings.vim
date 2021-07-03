@@ -1,9 +1,12 @@
 """"" GENERAL SETTINGS
 set mouse=a                         " because my computer has a mouse
 set noerrorbells                    " no audio please
-set tabstop=2 softtabstop=2         " insert 2 spaces for a tab
-set shiftwidth=2                    " size of autoindent (should = tabstop)
-set expandtab                       " convert tabs to spaces
+" Leave tabstop at default 8, and set tabs next 3 sets. See why: https://www.reddit.com/r/vim/wiki/tabstop
+" set tabstop=8                     " - leave default tabstop=8.
+set softtabstop=2                   " - insert 2 spaces for a tab
+set shiftwidth=2                    " - size of autoindent (should = tabstop)
+set expandtab                       " - convert tabs -> spaces. I don't use tabs
+set hidden                          " allow more than one unsaved buffer
 set smartindent                     " attempt to indent automatically
 set number                          " line numbers
 set relativenumber                  " ^ relative (on all but the current)
