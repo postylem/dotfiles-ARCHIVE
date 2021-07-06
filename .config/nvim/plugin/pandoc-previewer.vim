@@ -1,9 +1,10 @@
-
 "Custom pandoc markdown viewing
 "based on http://subhadig.net/preview-markdown-files-from-vim-the-easy-way.html
+"By: Jacob Louis Hoover, github.com/postylem
 
 " View markdown files as HTML on browser
 let s:browser='open'
+" or, set explicitly, like:
 "let s:browser='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser'
 
 function! s:Pandoc_CSS(pandoc_use_tufte)
@@ -23,23 +24,23 @@ function! s:Pandoc_CSS(pandoc_use_tufte)
         \ 'reference-section-title=' . s:reference_section_title,
         \ 'link-citations=' . s:whether_link_citations
         \ ]
-
+  " the cli arguments for pandoc
   let s:flags = join(s:flags_list)
 
-  " the additional flags for tufte-css formatting
-  " let g:pandoc_use_tufte_css=v:true
+  " add the additional flags for tufte-css formatting
   if a:pandoc_use_tufte
     let s:flags_list_tufte = [
           \ '--filter pandoc-sidenote',
           \ '--section-divs',
           \ '--to html5+smart'
           \ ]
-    let s:pandoc_css_dir='~/markdowning/tufte-pandoc-css'
+    let s:pandoc_css_dir='~/pandocmarkdown/tufte-pandoc-css'
     let s:css_file_list = [
         \ s:pandoc_css_dir . '/tufte-css/tufte.css',
         \ s:pandoc_css_dir . '/pandoc.css',
         \ s:pandoc_css_dir . '/pandoc-solarized.css',
-        \ s:pandoc_css_dir . '/tufte-extra.css'
+        \ s:pandoc_css_dir . '/tufte-extra.css',
+        \ s:pandoc_css_dir . '/custom.css'
         \ ]
     let s:flags .= ' ' . join(s:flags_list_tufte)
     let s:flags .= ' --css ' . join(s:css_file_list, ' --css ')
@@ -60,7 +61,7 @@ function! PandocMarkdownRender()
 endfunction
 
 ""
-" Removes the what is presumed to be) the pandoc-rendered html file
+" Removes (what is presumed to be) the pandoc-rendered html file
 " corresponding to the current buffer.
 function! PandocMarkdownRemoveHTML()
   execute "silent !" . "rm " . "%:p" . ".html &"
@@ -79,4 +80,5 @@ endfunction
 " Custom key bindings
 nnoremap <localleader>v :call PandocMarkdownView()<cr>
 nnoremap <localleader>r :call PandocMarkdownRender()<cr>
+nnoremap <localleader>rm :call PandocMarkdownRemoveHTML()<cr>
 

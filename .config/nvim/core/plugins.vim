@@ -78,7 +78,7 @@ if !exists('g:started_by_firenvim')
   " nice startpage (configurable with bookmarks and useful for saving sessions)
   Plug 'mhinz/vim-startify'
   " nice useful statusline
-  Plug 'bling/vim-bufferline'
+  " Plug 'bling/vim-bufferline'
   Plug 'vim-airline/vim-airline'
 endif
 
@@ -232,8 +232,7 @@ nmap ga <Plug>(EasyAlign)
 "}}}
 
 "{{{ vim-bufferline settings
-
-let g:bufferline_echo = 0
+" let g:bufferline_echo = 0
 "}}}
 
 "{{{ vim-airline settings

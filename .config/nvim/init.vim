@@ -35,4 +35,8 @@ endfor
 " see there for any lua scripts that I am using.
 lua require('entrance')
 
+" 
+" let g:python3_host_prog = expand('~/anaconda3/envs/py3/bin/python')
+
+
 " vim:foldmethod=marker:foldlevel=1
