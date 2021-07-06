@@ -13,3 +13,5 @@ The main plugins I like are:
 - [vim-easy-align](https://github.com/junegunn/vim-easy-align) - for quickly aligning table-type data based on delimiters (I like `:LiveEasyAlign` ...give it a try!)
 
 Check them out.
+
+Also [PandocMarkdownPreviewer](./PandocMarkdownPreviewer)
