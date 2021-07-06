@@ -34,7 +34,7 @@ function! s:Pandoc_CSS(pandoc_use_tufte)
           \ '--section-divs',
           \ '--to html5+smart'
           \ ]
-    let s:pandoc_css_dir='~/pandocmarkdown/tufte-pandoc-css'
+    let s:pandoc_css_dir='~/.config/nvim/PandocMarkdownPreviewer/tufte-pandoc-css'
     let s:css_file_list = [
         \ s:pandoc_css_dir . '/tufte-css/tufte.css',
         \ s:pandoc_css_dir . '/pandoc.css',

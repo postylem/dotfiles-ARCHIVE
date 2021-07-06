@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="jacob louis hoover">
+  <title>Previewing pandoc markdown notes</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/Users/j/.config/nvim/PandocMarkdownPreviewer/tufte-pandoc-css/tufte-css/tufte.css">
+  <link rel="stylesheet" href="/Users/j/.config/nvim/PandocMarkdownPreviewer/tufte-pandoc-css/pandoc.css">
+  <link rel="stylesheet" href="/Users/j/.config/nvim/PandocMarkdownPreviewer/tufte-pandoc-css/pandoc-solarized.css">
+  <link rel="stylesheet" href="/Users/j/.config/nvim/PandocMarkdownPreviewer/tufte-pandoc-css/tufte-extra.css">
+  <link rel="stylesheet" href="/Users/j/.config/nvim/PandocMarkdownPreviewer/tufte-pandoc-css/custom.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   var macros = [];
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      macros: macros,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<article>
+<header>
+<h1 class="title">Previewing pandoc markdown notes</h1>
+<p class="byline">2021.06.25 &ndash; jacob louis hoover</p>
+</header>
+<section id="what-is-this-for" class="level1">
+<h1>What is this for?</h1>
+<p>Note-taking/document-making in pandoc markdown is nice, because I can type the input below, and get the output (below that).</p>
+<section id="example-input" class="level2">
+<h2>Example input</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>I&#39;ll type some **math**, like for instance</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>$$H<span class="co">[</span><span class="ot">X</span><span class="co">]</span> = -\sum_X p(x) \log p(x).$$</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Also I&#39;ll put a footnote<span class="ot">[^1]</span> or two<span class="ot">[^2]</span> in my text.</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>This is the note text.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>I would also like to cite some things,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>like *perhaps* some linguistics classics</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">e.g. @tesniere.l:2015; @chomsky.n:1955; @lambek.j:1958</span><span class="co">]</span>.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Also I can cite a page <span class="co">[</span><span class="ot">@brown.p:1993, p. 2</span><span class="co">]</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>and Pandoc&#39;s <span class="in">`--citeproc`</span> does the citation formatting.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>The footnote text can come anywhere,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>it will be automatically placed where it needs to be.</span></code></pre></div>
+</section>
+<section id="example-output" class="level2">
+<h2>Example output</h2>
+<hr />
+<p>I’ll type some <strong>math</strong>, like for instance</p>
+<p><span class="math display">H[X] = -\sum_X p(x) \log p(x).</span></p>
+<p>Also I’ll put a footnote<span class="sidenote-wrapper"><label for="sn-0" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-0" class="margin-toggle"/><span class="sidenote">This is the note text.<br />
+<br />
+</span></span> or two<span class="sidenote-wrapper"><label for="sn-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-1" class="margin-toggle"/><span class="sidenote">The footnote text can come anywhere, it will be automatically placed where it needs to be.<br />
+<br />
+</span></span> in my text.</p>
+<p>I would also like to cite some things, like <em>perhaps</em> some linguistics classics <span class="citation" data-cites="tesniere.l:2015 chomsky.n:1955 lambek.j:1958">(e.g. <a href="#ref-tesniere.l:2015" role="doc-biblioref">Tesnière 2015</a>; <a href="#ref-chomsky.n:1955" role="doc-biblioref">Chomsky 1955 [1975]</a>; <a href="#ref-lambek.j:1958" role="doc-biblioref">Lambek 1958</a>)</span>. Also I can cite a page <span class="citation" data-cites="brown.p:1993">(<a href="#ref-brown.p:1993" role="doc-biblioref">Brown et al. 1993, 2</a>)</span>, and Pandoc’s <code>--citeproc</code> does the citation formatting.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<section id="references" class="level3">
+<h3>References</h3>
+<div id="ref-brown.p:1993" class="csl-entry" role="doc-biblioentry">
+Brown, Peter F., Stephen A. Della Pietra, Vincent J. Della Pietra, and Robert L. Mercer. 1993. <span>“The Mathematics of Statistical Machine Translation: Parameter Estimation.”</span> <em>Computational Linguistics</em> 19 (2): 263–311. <a href="https://www.aclweb.org/anthology/J93-2003">https://www.aclweb.org/anthology/J93-2003</a>.
+</div>
+<div id="ref-chomsky.n:1955" class="csl-entry" role="doc-biblioentry">
+Chomsky, Noam. 1955 [1975]. <span>“The Logical Structure of Linguistic Theory.”</span> <a href="http://alpha-leonis.lids.mit.edu/wordpress/?page_id=466">http://alpha-leonis.lids.mit.edu/wordpress/?page_id=466</a>.
+</div>
+<div id="ref-lambek.j:1958" class="csl-entry" role="doc-biblioentry">
+Lambek, Joachim. 1958. <span>“The Mathematics of Sentence Structure.”</span> <em>The American Mathematical Monthly</em> 65 (3): 154–70. <a href="https://doi.org/10.1080/00029890.1958.11989160">https://doi.org/10.1080/00029890.1958.11989160</a>.
+</div>
+<div id="ref-tesniere.l:2015" class="csl-entry" role="doc-biblioentry">
+Tesnière, Lucien. 2015. <em>Elements of Structural Syntax</em>. John Benjamins Publishing Company. <a href="https://doi.org/10.1075/z.185">https://doi.org/10.1075/z.185</a>.
+</div>
+</section>
+</div>
+<hr />
+<p>Using Pandoc to convert the markdown into HTML for viewing is particularly nice, because of its powerful support for citations. These citations are in read from a BibTeX file, so I can take notes in markdown (which is fast and simple) and set my bibliography up to later use in LaTeX.</p>
+</section>
+</section>
+<section id="how-to" class="level1">
+<h1>How to</h1>
+<p>Basically, it’s just this. Write markdown like above example, save it as e.g. <code>myfile.md</code><span class="sidenote-wrapper"><label for="sn-2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-2" class="margin-toggle"/><span class="sidenote">with a <code>yaml</code> header to specify the title, date, author, and other metadata.<br />
+<br />
+</span></span> and then run the following to see it as HTML.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pandoc myfile.md -s -C -o myfile.html</span></code></pre></div>
+<ul>
+<li><code>-s</code> (or <code>--standalone</code>) gets you a standalone HTML file using a default stylesheet.</li>
+<li><a href="https://pandoc.org/MANUAL.html#citations"><code>-C</code> (or <code>--citeproc</code>)</a> parses citations</li>
+</ul>
+<p>Below is a how I set up for markdown note-making in vim and use pandoc for preview.</p>
+<section id="basic-setup" class="level2">
+<h2>Basic setup</h2>
+<p>Requirements</p>
+<ul>
+<li>(<a href="https://neovim.io/">neo</a>)<a href="https://www.vim.org/">vim</a> editor</li>
+<li><a href="https://pandoc.org/index.html">pandoc</a> tool</li>
+</ul>
+<p>Write your markdown file (like I’m doing right now) in vim, and it’s easy to set up a simple function that uses Pandoc to translate the markdown in current buffer to html and open it in a browser. A very simple example of how to do this is in <a href="http://subhadig.net/preview-markdown-files-from-vim-the-easy-way.html">this blog post</a>.</p>
+</section>
+<section id="formatting-nicer" class="level2">
+<h2>Formatting nicer</h2>
+<p>The default stylesheet is fine, but you can also define your own CSS with Pandoc’s <a href="https://pandoc.org/MANUAL.html#option--css"><code>--css</code> flag</a> to format it how you like. I like to use the style provided by <a href="https://github.com/jez/tufte-pandoc-css"><code>tufte-pandoc-css</code></a>, in particular because it uses <a href="https://github.com/jez/pandoc-sidenote"><code>pandoc-sidenote</code></a> filter, so markdown <em>footnotes</em> become <em>sidenotes</em> instead of endnotes (as in the example above).</p>
+<p>To do this, install <code>pandoc-sidenote</code>, and copy the <code>tufte-pandoc-css</code> repo.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install jez/formulae/pandoc-sidenote</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/jez/tufte-pandoc-css.git</span></code></pre></div>
+<p>Then, the following command will convert your <code>myfile.md</code> to nice HTML5 like this, where <code>path/to/all.bib</code> is a BibTeX file containing your citations, and <code>PANDOCCSS=/your/path/to/tufte-pandoc-css</code><span class="sidenote-wrapper"><label for="sn-3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-3" class="margin-toggle"/><span class="sidenote">The options given here with the <code>--metadata</code> flag could alternatively be specified in the yaml header of the markdown file, like <code>bibliography: example.bib</code> to specify a file-specific bib file.<br />
+<br />
+</span></span></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> myfile.md <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--standalone</span> <span class="at">--citeproc</span> <span class="at">--katex</span> <span class="at">--section-divs</span> <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter</span> pandoc-sidenote <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to</span> html5+smart <span class="dt">\</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--template</span> <span class="va">$PANDOCCSS</span>/tufte <span class="dt">\</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--css</span> <span class="va">$PANDOCCSS</span>/tufte-css/tufte.css <span class="dt">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--css</span> <span class="va">$PANDOCCSS</span>/pandoc.css <span class="dt">\</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--css</span> <span class="va">$PANDOCCSS</span>/pandoc-solarized.css <span class="dt">\</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--css</span> <span class="va">$PANDOCCSS</span>/tufte-extra.css <span class="dt">\</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">--metadata</span> bibliography=path/to/all.bib <span class="dt">\</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">--metadata</span> reference-section-title=References <span class="dt">\</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">--metadata</span> link-citations=true <span class="dt">\</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">--output</span> myfile.html</span></code></pre></div>
+<section id="automating-it-in-vim" class="level3">
+<h3>Automating it in vim</h3>
+<p>To make this process easy while editing (so you can type your note in markdown use a quick keybinding to see it html), make a mapping to automatically call the above pandoc command, and open the resulting html file in your browser.</p>
+<p>I wrote a function <code>PandocMarkdownView</code> in <a href="/Users/j/.config/nvim/plugin/PandocMarkdownPreviewer.vim"><code>PandocMarkdownPreviewer.vim</code></a> which I map to <key>\</key><key>v</key> (where <code>\</code> is my <code>&lt;locallleader&gt;</code>).</p>
+</section>
+<section id="something-better" class="level3">
+<h3>Something better?</h3>
+<p>It would be nice to have <strong>live updating</strong> like the plugin <a href="https://github.com/iamcco/markdown-preview.nvim">markdown-preview.nvim</a> does, but that would require some more work (or digging into that project to see if it is possible to use pandoc to generate the html instead of <a href="https://github.com/markdown-it/markdown-it">markdown-it</a>).<span class="sidenote-wrapper"><label for="sn-4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-4" class="margin-toggle"/><span class="sidenote">Perhaps instead it’s as simple as modifying markdown-preview to integrate the markdown-it plugin <a href="https://github.com/martinring/markdown-it-citations">markdown-it-citations</a>, which makes citation “based on Pandoc.”<br />
+<br />
+</span></span></p>
+</section>
+</section>
+</section>
+</article>
+</body>
+</html>
