@@ -3,6 +3,8 @@
   email = postylem@gmail.com
 [core]
   excludesfile = ~/.gitignore_global
+  attributesfile = ~/.gitattributes_global
+  editor = vim
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
   path =
