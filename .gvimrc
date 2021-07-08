@@ -2,6 +2,7 @@ set guifont=Fira\ Mono:h14
 "set linespace=1
 hi SpellBad gui=underline
 " make some Unicode characters display double width
+" (e.g. for latex preview of mathcal chars in macvim gui)
 call setcellwidths([[0x1d4d0, 0x1d4d0, 2],
                   \ [0x1d4d1, 0x1d4d1, 2],
                   \ [0x1d4d2, 0x1d4d2, 2],
