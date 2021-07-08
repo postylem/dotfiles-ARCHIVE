@@ -1,8 +1,7 @@
-"{Remaps
-" puts the bibtex corresponding to the doi in the system clipboard
+"{{{ Remaps
+" Put the bibtex corresponding to the doi in the system clipboard
 nnoremap <silent> <leader>pp :DOI2bib "<c-r>+"<cr>
 
-"{{ Miscellaneous remaps
 " Edit and reload init.vim quickly
 nnoremap <silent> <leader>ev :<C-U>tabnew $MYVIMRC <bar> tcd %:h<cr>
 nnoremap <silent> <leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
@@ -16,17 +15,17 @@ nnoremap <expr> OO printf('m`%sO<ESC>``', v:count1)
 " Jump to matching pairs easily in normal mode
 nnoremap <Tab> %
 
-" fix last misspelled word, in insert mode
+" Fix last misspelled word, in insert mode
 inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
-" move between buffers
+" Move between buffers
 nnoremap gb :buffers<CR>:buffer<Space>
 nnoremap <leader>b  :buffer <c-z>
 nnoremap <PageUp>   :bprevious<CR>
 nnoremap <PageDown> :bnext<CR>
 " See also ]b and [b from tpope/vim-unimpaired, of course.
 
-" stop typing :nohl all the time!
+" Stop typing :nohl all the time!
 map <Leader>/ :nohlsearch<CR>
 
 nnoremap <leader>h :wincmd h<cr>
@@ -38,7 +37,7 @@ nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
 nnoremap <silent> <leader>- :resize -1<cr>
 nnoremap <leader>= :resize +1<cr>
 
-" integrated terminal mappings
+" Integrated terminal mappings
 tnoremap <esc> <c-\><c-n>
 if has('nvim')
   " mimic the default ':term' behav in vim
@@ -54,14 +53,14 @@ if has('nvim')
 else
   nnoremap <silent> <c-c><c-c> :terminal<cr>
 endif
-"}}
+"}}}
 
-"{{ PLUGIN SPECIFIC REMAPS
+"{{{ PLUGIN SPECIFIC REMAPS
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>vrc :lua require('luautils').search_dotfiles()<CR>
+nnoremap <leader>vrc :lua require('utils').search_dotfiles()<CR>
 
 nnoremap <leader>u :UndotreeShow<cr>
 
@@ -80,5 +79,4 @@ nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <leader>gg :G<cr>
 nnoremap <leader>gj :diffget //3<cr>
 nnoremap <leader>gf :diffget //2<cr>
-"}}
-"}
+"}}}

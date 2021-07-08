@@ -74,6 +74,10 @@ Plug 'Chiel92/vim-autoformat'
 "{{{ UI and theme plugins
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 
+" Get help when pressing a leader key.  Great for feature discovery.
+" (this is a configured lua port of 'liuchengxu/vim-which-key')
+Plug 'folke/which-key.nvim'
+
 if !exists('g:started_by_firenvim')
   " nice startpage (configurable with bookmarks and useful for saving sessions)
   Plug 'mhinz/vim-startify'
@@ -119,7 +123,12 @@ endif
 Plug 'nvim-telescope/telescope.nvim' |
       \ Plug 'nvim-lua/popup.nvim' |
       \ Plug 'nvim-lua/plenary.nvim'
+" Telescope Extensions: These need to be loadd with
+" require('telescope').load_extension('...')
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'fhill2/telescope-ultisnips.nvim'
+Plug 'fannheyward/telescope-coc.nvim'
+
 
 "}}}
 
@@ -484,8 +493,8 @@ let g:snips_email="postylem@gmail.com"
 let g:snips_github="https://github.com/postylem"
 "}}}
 
-" telescope.nvim setup is in lua/j/telescope.lua
-"}}}
+" see lua/utils.lua for telescope.nvim and which-key.nvim settings
 
+"}}}
 
 " vim:foldmethod=marker:foldlevelstart=1

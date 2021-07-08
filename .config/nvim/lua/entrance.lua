@@ -1,2 +1,2 @@
--- my lua utils are in 'luautils'
-require 'luautils'
+-- my lua utils are in './utils.lua'
+require 'utils'

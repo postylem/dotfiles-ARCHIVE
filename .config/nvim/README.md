@@ -14,4 +14,4 @@ The main plugins I like are:
 
 Check them out.
 
-Also [PandocMarkdownPreviewer](./PandocMarkdownPreviewer)
+Also here's my [PandocMarkdownPreviewer](./PandocMarkdownPreviewer)

@@ -19,8 +19,8 @@ Also I'll put a footnote[^1] or two[^2] in my text.
 
 [^1]: This is the note text.
 
-I would also like to cite some things,
-like *perhaps* some linguistics classics
+I would also like to *cite* some things,
+**like *perhaps* some** linguistics classics
 [e.g. @tesniere.l:2015; @chomsky.n:1955; @lambek.j:1958].
 Also I can cite a page [@brown.p:1993, p. 2],
 and Pandoc's `--citeproc` does the citation formatting.
@@ -41,8 +41,8 @@ Also I'll put a footnote[^1] or two[^2] in my text.
 
 [^1]: This is the note text.
 
-I would also like to cite some things,
-like *perhaps* some linguistics classics
+I would also like to *cite* some things,
+**like *perhaps* some** linguistics classics
 [e.g. @tesniere.l:2015; @chomsky.n:1955; @lambek.j:1958].
 Also I can cite a page [@brown.p:1993, p. 2],
 and Pandoc's `--citeproc` does the citation formatting.
