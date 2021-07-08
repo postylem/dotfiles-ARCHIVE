@@ -1,3 +1,9 @@
+" Description: Vim config file (vim version of neovim's .config/nvim/init.vim file)
+" Disclaimer: mostly functional, but I primarily use nvim now, so this config is stale.
+"   Note I set nvim to share Vim's plugin dir '~/.vim/plugged'
+"   so both vim and nvim share this dir for their plugins, using junegunn/vim-plug.
+" Author: jacob louis hoover
+
 " Display things
 if has('syntax') && (&t_Co > 2)
   syntax on
