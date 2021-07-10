@@ -19,7 +19,7 @@ export DBUS_SESSION_BUS_ADDRESS='unix:path='$DBUS_LAUNCHD_SESSION_BUS_SOCKET
 # To automatically start at tmux session when ssh-ing
 # from https://stackoverflow.com/a/27614878/1676393
 function ssht () {/usr/bin/ssh -t $@ "tmux attach || tmux new";}
-export TERM="tmux-256color" # I set this for italics instead of screen-256color
+# export TERM="tmux-256color" # I set this for italics instead of screen-256color
 # PATH additions ----------------
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH=/usr/local/bin:$HOME/bin:$PATH
@@ -97,7 +97,9 @@ export ZSH="/Users/j/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="random" # (I hope this will one of the fancy ones)
 # ZSH_THEME="spaceship"
-ZSH_THEME='' # for integration with 'sindresorhus/pure'
+
+# # for a nice prompt from 'sindresorhus/pure'
+ZSH_THEME=''
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -180,6 +182,19 @@ plugins=(
   zsh-vi-mode
 )
 
+# The following needs to come before sourcing oh-my-zsh...
+# use zle's history-search functionality to search the history
+# for entries that start with the current prefix.
+# so, can type `vim ` and then <uparrow> to browse backward through
+# history of commands starting with `vim `.
+# Also I like to have the cursor placed at end of the line end 
+# once desired command is selected (https://unix.stackexchange.com/a/97844)
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -187,14 +202,14 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -211,7 +226,8 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/Users/j/.gem/ruby/2.6.0/bin:$PATH"
 source ~/.rvm/scripts/rvm
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 
 ## To enable cd'ing into a macOS folder alias (~/getTrueName.c)
 #function cd {
@@ -228,9 +244,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 #}
 export PATH="/usr/local/sbin:$PATH"
 
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# Note this must be last thing in the zshrc
-# source /Users/j/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
