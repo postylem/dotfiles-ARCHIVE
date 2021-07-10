@@ -72,6 +72,7 @@ Plug 'Chiel92/vim-autoformat'
 "}}}
 
 "{{{ UI and theme plugins
+" If you don't like netrw for some reason, but let's only load it on toggle
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Get help when pressing a leader key.  Great for feature discovery.
@@ -90,6 +91,9 @@ Plug 'gruvbox-community/gruvbox'
 " Or, for a fast version, but a little different, gruvbox8
 " customization I find necessary in settings.vim
 " Plug 'lifepillar/vim-gruvbox8'
+
+" Material theme
+"Plug 'marko-cerovac/material.nvim'
 "}}}
 
 "{{{ Plugin to deal with URL
@@ -208,7 +212,7 @@ endif
 
 "{{{ NERDTree settings
 " Start NERDTree when Vim starts with a directory argument.
-autocmd StdinReadPre * let s:std_in=1
+" autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if
 "       \ argc() == 1
 "       \ && isdirectory(argv()[0])

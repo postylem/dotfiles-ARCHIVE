@@ -71,10 +71,10 @@ nnoremap <leader>t :Vista!!<cr>
 "nnoremap <silent> <leader>gd :YcmCompleter GoTo<cr>
 "nnoremap <silent> <leader>gf :YcmCompleter FixIt<cr>
 
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+" nnoremap <leader>n :NERDTreeFocus<CR>
+" nnoremap <C-n> :NERDTree<CR>
+" nnoremap <C-t> :NERDTreeToggle<CR>
+" nnoremap <C-f> :NERDTreeFind<CR>
 
 nnoremap <leader>gg :G<cr>
 nnoremap <leader>gj :diffget //3<cr>
