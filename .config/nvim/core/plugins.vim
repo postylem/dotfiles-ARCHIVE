@@ -25,7 +25,7 @@ Plug 'junegunn/vim-plug'
 " vim-fugitive is the standard. Use the :Git command
 Plug 'tpope/vim-fugitive'
 " show change/delete/add in vim's sign column / gutter
-Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify', { 'on': 'SignifyToggle' }
 "}}}
 
 "{{{ General editing plugins
@@ -51,7 +51,8 @@ Plug 'junegunn/vim-peekaboo'
 
 " conveniently interactively tabularize text based on delimiters
 Plug 'junegunn/vim-easy-align'
-
+" goyo.vim (고요): Distraction-free writing in Vim.
+Plug 'junegunn/goyo.vim'
 "}}}
 
 "{{{ Linting, formating
@@ -374,6 +375,8 @@ let g:airline#extensions#ale#enabled = 1
 "{{{ signify settings
 " Change the 'change' sign from the default '!'
 let g:signify_sign_change = '~'
+" Disable by default.  You can toggle with the command SignifyToggle
+let g:signify_disable_by_default = 1
 "}}}
 
 "{{{ vim-pandoc settings
