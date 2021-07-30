@@ -1,0 +1,15 @@
+/* These are some custom fixes */
+div.csl-bib-body {
+  /* Set font size for the footnotes */
+  /* 1.4rem is main text (in section) 15pt is default html I think */
+  font-size: 1.2rem; 
+}
+
+body {
+  font-family: "Linux Libertine", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  /* letter-spacing: .03em; */
+  background-color: #fff;
+  max-width: 2800px;
+  width: 95%;
+  padding-left: 5%;
+}

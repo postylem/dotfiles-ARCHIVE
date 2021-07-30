@@ -1,5 +1,6 @@
 ---
 title: Previewing pandoc markdown notes
+subtitle: with sidenotes
 date: 2021.06.25
 author: jacob louis hoover
 ---
@@ -15,7 +16,7 @@ I'll type some **math**, like for instance
 
 $$H[X] = -\sum_X p(x) \log p(x).$$
 
-Also I'll put a footnote[^1] or two[^2] in my text.
+Also I'll put a numbered[^1] or unnumbered note[^2] in my text.
 
 [^1]: This is the note text.
 
@@ -25,7 +26,7 @@ I would also like to *cite* some things,
 Also I can cite a page [@brown.p:1993, p. 2],
 and Pandoc's `--citeproc` does the citation formatting.
 
-[^2]: The footnote text can come anywhere,
+[^2]:{-} The sidenote text can come anywhere,
 it will be automatically placed where it needs to be.
 ```
 
@@ -37,7 +38,7 @@ I'll type some **math**, like for instance
 
 $$H[X] = -\sum_X p(x) \log p(x).$$
 
-Also I'll put a footnote[^1] or two[^2] in my text.
+Also I'll put a numbered[^1] or unnumbered sidenote[^2] in my text.
 
 [^1]: This is the note text.
 
@@ -47,7 +48,7 @@ I would also like to *cite* some things,
 Also I can cite a page [@brown.p:1993, p. 2],
 and Pandoc's `--citeproc` does the citation formatting.
 
-[^2]: The footnote text can come anywhere,
+[^2]:{-} The sidenote text can come anywhere,
 it will be automatically placed where it needs to be.
 
 ::: {#refs}
@@ -120,7 +121,7 @@ pandoc myfile.md \
 
 To make this process easy while editing (so you can type your note in markdown use a quick keybinding to see it html), make a mapping to automatically call the above pandoc command, and open the resulting html file in your browser.
 
-I wrote a function `PandocMarkdownView` in [`PandocMarkdownPreviewer.vim`](/Users/j/.config/nvim/plugin/PandocMarkdownPreviewer.vim) which I map to <key>\\</key><key>v</key> (where `\` is my `<locallleader>`).
+I wrote a function `PandocPreviewerView` in [`PandocPreviewer.vim`](/Users/j/.config/nvim/plugin/PandocPreviewer.vim) which I map to <key>\\</key><key>v</key> (where `\` is my `<locallleader>`).
 
 
 ### Something better?

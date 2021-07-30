@@ -1,6 +1,0 @@
-/* These are some custom fixes */
-div.csl-bib-body {
-  /* Set font size for the footnotes */
-  /* 1.4rem is main text (in section) 15pt is default html I think */
-  font-size: 1.2rem; 
-}
