@@ -1,4 +1,4 @@
 # Pandoc Markdown Previewer
 Taking notes in markdown and previewing as HTML.
 
-See [pandocpreviewing.md](pandocpreviewing.md), which is [rendered as HTML](pandocpreviewing.md.html) (if you're looking at this on GitHub, you could preview the html [with githack](https://raw.githack.com/postylem/dotfiles/main/.config/nvim/PandocPreviewer/pandocpreviewing.md.html), but it doesn't show the CSS formatting).
+See [pandocpreviewing.md](pandocpreviewing.md), which is [rendered as HTML](pandocpreviewing.md.html) (you can preview the html [with githack](https://raw.githack.com/postylem/dotfiles/main/.config/nvim/PandocPreviewer/pandocpreviewing.md.html).  _Note: to render this example, I used pandoc's `--self-contained` flag, so the resulting file contains all the required styling.  Normally I omit this for _much_ more space-efficient HTML files with external CSS, but that wouldn't work for this demonstration._
