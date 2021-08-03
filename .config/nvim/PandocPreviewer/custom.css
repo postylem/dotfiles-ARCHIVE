@@ -6,10 +6,52 @@ div.csl-bib-body {
 }
 
 body {
-  font-family: "Linux Libertine", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-  /* letter-spacing: .03em; */
+  /* font-family: "Linux Libertine", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; */
   background-color: #fff;
-  max-width: 2800px;
-  width: 95%;
-  padding-left: 5%;
+  /* letter-spacing: .03em; */
 }
+
+/* Make things wider by a bit on desktop */
+@media (min-width: 760px) {
+  /* The body was originally width 87.5% with 12.5% padding */
+  body {
+    width: 95%;
+    padding-left: 5%;
+  }
+  /* The paragraph is originally 55% */
+  section > p, section > footer, section > table {
+    width: 60%;
+  }
+  /* The lists were originally 50% (+ 5 = 55)
+   * 55 + 5 == 60, to be the same width as paragraph */
+section > dl, section > ol, section > ul {
+  width: 55%;
+  -webkit-padding-start: 5%;
+}
+/* The blockquotes were originally 55% */
+blockquote p {
+  width: 60%;
+  margin-right: 40px;
+}
+blockquote footer {
+  width: 60%;
+  font-size: 1.1rem;
+  text-align: right;
+}
+/* Originally 55% */
+figure {
+  max-width: 60%;
+}
+/* Originally 40% */
+figcaption {
+  max-width: 45%;
+}
+
+/* Adjusted. margin-right was -60%, width was 50% */
+.sidenote,
+.marginnote {
+  margin-right: -55%;
+  width: 45%;
+}
+}
+
