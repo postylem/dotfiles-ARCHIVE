@@ -121,7 +121,7 @@ pandoc myfile.md \
 
 To make this process easy while editing (so you can type your note in markdown use a quick keybinding to see it html), make a mapping to automatically call the above pandoc command, and open the resulting html file in your browser.
 
-I wrote a function `PandocPreviewerView` in [`PandocPreviewer.vim`](/Users/j/.config/nvim/plugin/PandocPreviewer.vim) which I map to <key>\\</key><key>v</key> (where `\` is my `<locallleader>`).
+I wrote a function `PandocPreviewerView` in [`PandocPreviewer.vim`](../plugin/PandocPreviewer.vim) which I map to <key>\\</key><key>v</key> (where `\` is my `<locallleader>`).
 
 
 ### Something better?
