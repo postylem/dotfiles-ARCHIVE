@@ -2,7 +2,7 @@
 div.csl-bib-body {
   /* Set font size for the footnotes */
   /* 1.4rem is main text (in section) 15pt is default html I think */
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
 }
 
 body {
@@ -11,47 +11,65 @@ body {
   /* letter-spacing: .03em; */
 }
 
+blockquote p {
+  line-height: 1.75rem;
+  font-size: 1.25rem;
+  color: #606060;
+}
+
 /* Make things wider by a bit on desktop */
+/* And switch to vw rather than % as unit */
 @media (min-width: 760px) {
   /* The body was originally width 87.5% with 12.5% padding */
   body {
-    width: 95%;
-    padding-left: 5%;
+    width: 95vw;
+    padding-left: 5vw;
+    max-width: none;
   }
   /* The paragraph is originally 55% */
   section > p, section > footer, section > table {
-    width: 60%;
+    width: 60vw;
   }
-  /* The lists were originally 50% (+ 5 = 55)
-   * 55 + 5 == 60, to be the same width as paragraph */
-section > dl, section > ol, section > ul {
-  width: 55%;
-  -webkit-padding-start: 5%;
-}
-/* The blockquotes were originally 55% */
-blockquote p {
-  width: 60%;
-  margin-right: 40px;
-}
-blockquote footer {
-  width: 60%;
-  font-size: 1.1rem;
-  text-align: right;
-}
-/* Originally 55% */
-figure {
-  max-width: 60%;
-}
-/* Originally 40% */
-figcaption {
-  max-width: 45%;
-}
+  /* The lists were originally 50% (+ 5 = 55).*/
+  section > dl, section > ol, section > ul {
+    width: 57vw;
+    -webkit-padding-start: 3vw;
+  }
+  blockquote {
+    margin-left: 0;
+    margin-right: 0;
+  }
 
-/* Adjusted. margin-right was -60%, width was 50% */
-.sidenote,
-.marginnote {
-  margin-right: -55%;
-  width: 45%;
-}
+  /* The blockquotes were originally 55% */
+  blockquote p {
+    width: 59vw;
+    margin: 1rem 1rem 1rem 0px;
+    padding-left: 1vw;
+    border-left: 2px solid #e6e6e6;
+  }
+  blockquote footer {
+    width: 60vw;
+    font-size: 1.1rem;
+    text-align: right;
+  }
+  blockquote .sidenote, blockquote .marginnote {
+    margin-right: -30vw;
+    min-width: 25vw;
+  }
+  /* Originally 55% */
+  figure {
+    max-width: 60vw;
+  }
+  /* Originally 40% */
+  figcaption {
+    max-width: 57vw;
+  }
+
+  /* Adjusted. margin-right was -60%, width was 50% */
+  .sidenote,
+  .marginnote {
+    margin-right: -30vw;
+    width: 25vw;
+  }
 }
 
