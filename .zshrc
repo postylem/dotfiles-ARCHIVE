@@ -1,6 +1,7 @@
 alias rr=radian
 alias please=sudo
 alias thanks='echo "no problem"; sleep 0.5; exit'
+alias :q=bye
 # for 'reload' instead of restarting terminal after editing this file
 alias reload='source ~/.zshrc && echo "File .zshrc reloaded correctly" || echo "Syntax error, could not import file"'
 alias cat=ccat # for colourized cat. use \cat for the original
