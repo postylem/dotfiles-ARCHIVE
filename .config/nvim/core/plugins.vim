@@ -418,6 +418,11 @@ let g:vimtex_compiler_latexmk_engines = {
       \ '_'                : '-xelatex',
       \}
 
+" Disable custom warnings based on regexp
+let g:vimtex_quickfix_ignore_filters = [
+      \ 'Underfull \\hbox',
+      \]
+
 " Special rhs styles (based on vimtex#imaps#style_math in
 " https://github.com/lervag/vimtex/blob/master/autoload/vimtex/imaps.vim)
 "{{{
