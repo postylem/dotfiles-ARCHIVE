@@ -15,4 +15,6 @@ let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
 " Directory listing is 30%, vertical preview window is remaining 70%
 let g:netrw_winsize   = 30
+" hide that massive banner
+let g:netrw_banner = 0
 "}}
