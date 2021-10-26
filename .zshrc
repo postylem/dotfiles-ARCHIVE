@@ -86,7 +86,6 @@ conda deactivate
 # path for stack (Haskell) things
 export PATH="/Users/j/.local/bin:$PATH"
 
-
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/j/.oh-my-zsh"
 
@@ -225,10 +224,8 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/Users/j/.gem/ruby/2.6.0/bin:$PATH"
-source ~/.rvm/scripts/rvm
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 
 ## To enable cd'ing into a macOS folder alias (~/getTrueName.c)
 #function cd {
@@ -246,5 +243,6 @@ source ~/.rvm/scripts/rvm
 export PATH="/usr/local/sbin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
