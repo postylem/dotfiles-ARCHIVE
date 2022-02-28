@@ -7,6 +7,9 @@ alias reload='source ~/.zshrc && echo "File .zshrc reloaded correctly" || echo "
 alias cat=ccat # for colourized cat. use \cat for the original
 # for my dotfiles.git repo, which is a bare repo in the home dir
 alias dotgit='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+# for my allbib.git repo, which just tracks my all.bib file
+alias allbib-git='git --git-dir=$HOME/allbib.git --work-tree=$HOME/Library/texmf/bibtex/bib/'
+alias allbib-refresh='allbib-git add $HOME/Library/texmf/bibtex/bib/all.bib && allbib-git commit -m "routine update" && allbib-git push'
 
 # set default (n)vim editor for easy access (use \vim for original)
 alias vim=nvim
