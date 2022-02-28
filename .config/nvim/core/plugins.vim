@@ -150,7 +150,7 @@ if ( g:is_win || g:is_mac ) && executable('latex')
   Plug 'Konfekt/FastFold'
 endif
 
-" Plug 'JuliaEditorSupport/julia-vim'
+Plug 'JuliaEditorSupport/julia-vim'
 
 " Plugin for pandoc (and of course pandoc-syntax too)
 " Assumes markdown files are pandoc markdown, and uses filetype=pandoc
