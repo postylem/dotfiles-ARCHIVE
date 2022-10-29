@@ -1,3 +1,7 @@
+__This repo is archived, and will not be updated.__ I moved to a different method, at [postylem/dotfiles](https://github.com/postylem/dotfiles).
+
+----
+
 _This readme file is at `.github/README.md`, so it will be displayed when viewing the repo on GitHub._
 
 This file outlines how I version control my dotfiles, using a git repo with the worktree set to `$HOME`.
